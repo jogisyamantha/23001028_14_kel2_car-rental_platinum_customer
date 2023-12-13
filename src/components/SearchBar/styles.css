@@ -1,5 +1,5 @@
 .search-bar {
-  /* width: 1047px; */
+  width: fit-content;
   border-radius: 8px;
   padding: 24px;
   /* Shadow/High */
@@ -36,6 +36,8 @@
 
 .search-form button {
   padding: 8px 12px;
+  height: fit-content;
+  align-self: flex-end;
   border: transparent;
   border-radius: 2px;
   background: #5cb85f;

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
 // import { Link } from 'react-router-dom';
 import axios from "axios";
+import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import SearchBar from "../../components/SearchBar";
 import './styles.css'
+
 
 const Result = () => {
     const [name, setName] = useState('');
@@ -22,7 +24,7 @@ const Result = () => {
         dataMaxPrice = '',
     ) => {
         axios
-            .get(`https://api-car-rental.binaracademy.org/customer/v2/car?name=${dataName}&category=${dataCategory}&isRented=${dataStatus}&page=1&pageSize=10&minPrice=${dataMinPrice}&maxPrice=${dataMaxPrice}`)
+            .get(`https://api-car-rental.binaracademy.org/customer/v2/car?name=${dataName}&category=${dataCategory}&isRented=${dataStatus}&page=1&pageSize=3&minPrice=${dataMinPrice}&maxPrice=${dataMaxPrice}`)
             // 
             .then((res) => {
                 const carData = res.data.cars
@@ -35,7 +37,8 @@ const Result = () => {
     
     return (
         <div>
-            <div>Header</div>
+            {/* Navbar */}
+            <Navbar/>
             {/* Search bar */}
             <SearchBar/>
             {/* Search result */}

@@ -1,16 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Ticket from "../src/pages/Ticket";
+import React from "react";
+import { RouterProvider } from "react-router-dom";
+import { routes } from "../src/utils/routes.jsx";
 
-function App() {
-  return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/tiket" element={<Ticket />} />
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
-}
+const App = () => {
+  return <RouterProvider router={routes}></RouterProvider>;
+};
 
 export default App;

@@ -7,18 +7,18 @@ import OurServices from "../../components/OurServices";
 import Header from "../../components/Header";
 import Testimony from "../../components/Testimony";
 
-const LandingPage = () => {
+const Home = () => {
   return (
     <div className="landing-page-container">
-      <Header hasBanner={true} />
+      {/* <Header hasBanner={true} />
       <OurServices />
       <WhyUs />
       <Testimony />
       <Banner />
       <FAQ />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 };
 
-export default LandingPage;
+export default Home;

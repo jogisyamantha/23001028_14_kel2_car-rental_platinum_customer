@@ -1,0 +1,23 @@
+.carousel-card {
+  /* width: 619px; */
+  border-radius: 8px;
+  background: #f1f3ff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  padding: 46px;
+  margin: auto;
+  align-items: center;
+  gap: 46px;
+}
+
+.carousel-card-right {
+  max-width: 415px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.carousel-rate {
+  width: 80px;
+}

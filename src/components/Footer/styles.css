@@ -1,0 +1,34 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 126px 100px 173px;
+}
+
+.address {
+  width: 268px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.social-media {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.social-media div {
+  display: flex;
+  gap: 16px;
+}
+
+.social-media img {
+  width: 32px;
+}

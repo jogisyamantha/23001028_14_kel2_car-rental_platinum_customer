@@ -1,0 +1,33 @@
+.whyus-container {
+  max-width: 1168px;
+  margin: auto;
+}
+
+.whyus-header {
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  padding-bottom: 16px;
+}
+
+.whyus-card-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  padding-top: 16px;
+}
+
+@media screen and (max-width: 600px) {
+  .whyus-card-container {
+    gap: 16px;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .whyus-container {
+    width: 100%;
+  }
+}

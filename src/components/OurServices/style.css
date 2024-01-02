@@ -1,0 +1,48 @@
+.our-service-container {
+  display: flex;
+  max-width: 1027px;
+  color: #000;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: 700;
+  margin: auto;
+  gap: 86px;
+}
+
+.our-service-container-right {
+  display: flex;
+  flex-direction: column;
+  max-width: 468px;
+}
+
+.our-service-title {
+  font-size: 24px;
+  line-height: 36px;
+  padding-bottom: 24px;
+}
+
+.our-service-desc {
+  padding-bottom: 16px;
+}
+
+.our-service-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.our-service-list {
+  display: flex;
+  gap: 16px;
+}
+
+.our-service-list img {
+  width: 24px;
+  height: fit-content;
+}
+
+@media screen and (max-width: 600px) {
+  .our-service-container {
+    flex-direction: column;
+  }
+}

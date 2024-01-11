@@ -1,3 +1,4 @@
+import './styles.css'
 const Terms = () => {
     const includeList = [
         "Apa saja yang termasuk dalam paket misal durasi max 12 jam",
@@ -23,19 +24,21 @@ const Terms = () => {
     ]
 
     return (
-        <div>
+        <div className="terms-container">
             <p>Tentang Paket</p>
-            <div>
-            <div>Include</div>
-            {includeList.map((item, index) => (
-                <li key={index}>{item}</li>
-            ))}
-            <div>Exclude</div> 
-            {excludeList.map((item, index) => (
-                <li key={index}>{item}</li>
-            ))}
+            <div className="include-list">
+                <div>Include</div>
+                {includeList.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
             </div>
-            <div>
+            <div className='exclude-list'>
+                <div>Exclude</div> 
+                {excludeList.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </div>
+            <div className="refund-container">
                 <p>Refund, Reschedule, Overtime</p>
                 {termsList.map((item, index) => (
                     <li key={index}>{item}</li>

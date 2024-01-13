@@ -6,6 +6,7 @@
 }
 
 .terms-container {
+  width: 630px;
   border-radius: 8px;
   background: #fff;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
@@ -40,8 +41,13 @@
 }
 
 .car-detail-image {
-  border-radius: 8px;
   width: 405px;
+}
+
+.car-detail-image img {
+  width: inherit;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .car-detail-card button {

@@ -3,8 +3,28 @@ import Navbar from "../../components/Navbar";
 import SearchBar from "../../components/SearchBar";
 import Terms from "./terms";
 import "./styles.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const CarDetail = () => {
+  const [car, setCar] = useState([]);
+
+  useEffect(() => {
+    carById();
+  }, []);
+
+  const carById = () => {
+    axios
+      .get(`https://api-car-rental.binaracademy.org/customer/car/3156`)
+      .then((res) => {
+        console.log(res.data);
+        setCar(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <Navbar />
@@ -13,11 +33,11 @@ const CarDetail = () => {
         <Terms />
         <div className="car-detail-card">
           <div className="car-detail-image">
-            <img alt="car-image" />
+            <img src={car.image} alt="car-image" />
           </div>
           <div className="car-name">
-            <p>Car Name</p>
-            <p>Car Type</p>
+            <p>{car.name}</p>
+            <p>{car.category}</p>
           </div>
           <div className="form-date">
             <p>Tentukan lama sewa mobil (max. 7 hari)</p>
@@ -28,7 +48,7 @@ const CarDetail = () => {
           </div>
           <div className="price-container">
             <p>Total:</p>
-            <p>Price</p>
+            <p>{car.price}</p>
           </div>
           <button>Lanjutkan Pembayaran</button>
         </div>

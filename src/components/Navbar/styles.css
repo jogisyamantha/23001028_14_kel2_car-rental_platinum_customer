@@ -1,0 +1,28 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 136px;
+}
+
+.navbar-container img {
+  width: 100px;
+}
+
+.navbar-container div {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.navbar-container a {
+  font-size: 14px;
+}
+
+.navbar-container button {
+  padding: 8px 12px;
+  border: transparent;
+  border-radius: 2px;
+  background: #5cb85f;
+  color: #fff;
+  font-weight: 700;
+}

@@ -15,7 +15,7 @@ const CarDetail = () => {
 
   const carById = () => {
     axios
-      .get(`https://api-car-rental.binaracademy.org/customer/car/3156`)
+      .get(`https://api-car-rental.binaracademy.org/customer/car/3208`)
       .then((res) => {
         console.log(res.data);
         setCar(res.data);

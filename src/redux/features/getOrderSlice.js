@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getOrder = createAsyncThunk("order/getOrder", async (id) => {
+export const getOrder = createAsyncThunk("getOrder/getOrder", async (id) => {
   try {
     const res = await axios.get(
       `https://api-car-rental.binaracademy.org/customer/order/${id}`
@@ -28,7 +28,7 @@ const initialState = {
 };
 
 export const getOrderSlice = createSlice({
-  name: "order",
+  name: "getOrder",
   initialState,
   reducers: {},
   extraReducers: (builder) => {

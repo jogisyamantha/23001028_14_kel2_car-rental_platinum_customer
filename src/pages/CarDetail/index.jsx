@@ -3,27 +3,19 @@ import Navbar from "../../components/Navbar";
 import SearchBar from "../../components/SearchBar";
 import Terms from "./terms";
 import "./styles.css";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { carById } from "../../redux/features/carDetailSlice";
 
 const CarDetail = () => {
-  const [car, setCar] = useState([]);
+  const param = useParams();
+  const dispatch = useDispatch();
+  const { car } = useSelector((state) => state.detail);
 
   useEffect(() => {
-    carById();
+    dispatch(carById(param.id));
   }, []);
-
-  const carById = () => {
-    axios
-      .get(`https://api-car-rental.binaracademy.org/customer/car/3208`)
-      .then((res) => {
-        console.log(res.data);
-        setCar(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <div>

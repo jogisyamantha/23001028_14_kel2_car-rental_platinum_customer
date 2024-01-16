@@ -1,0 +1,55 @@
+.order-detail {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  margin: 0 200px;
+}
+
+.order-detail h3 {
+  font-size: 14px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+.detail-container {
+  display: flex;
+  gap: 8px;
+}
+
+.detail-container div {
+  width: 240px;
+}
+
+.detail-container p {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.bank-card {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+}
+
+.bank-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+.option-bank {
+  display: flex;
+  gap: 16px;
+}
+
+.price-card {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+}

@@ -19,6 +19,7 @@
 .car-card img {
   width: 286px;
   border-radius: 8px;
+  max-height: 160px;
 }
 
 .car-card p:first-of-type {
@@ -43,4 +44,5 @@
   background: #5cb85f;
   color: #fff;
   font-weight: 700;
+  width: -webkit-fill-available;
 }

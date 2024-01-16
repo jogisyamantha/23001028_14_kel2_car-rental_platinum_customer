@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import FindCar from "../pages/FindCar";
 import Result from "../pages/Result";
 import CarDetail from "../pages/CarDetail";
+import Payment from "../pages/Payment";
 
 export const routes = createBrowserRouter([
   {
@@ -20,5 +21,9 @@ export const routes = createBrowserRouter([
   {
     path: "/car-list/:id",
     element: <CarDetail />,
+  },
+  {
+    path: "/order",
+    element: <Payment />,
   },
 ]);

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const createOrder = createAsyncThunk(
-  "order/createOrder",
+  "createOrder/createOrder",
   async (payload) => {
     try {
       const res = await axios.post(
@@ -23,7 +23,7 @@ const initialState = {
 };
 
 export const createOrderSlice = createSlice({
-  name: "order",
+  name: "createOrder",
   initialState,
   reducers: {},
   extraReducers: (builder) => {

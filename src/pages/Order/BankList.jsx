@@ -12,17 +12,17 @@ const BankList = () => {
         <div className="option-bank">
           <p>BCA</p>
           <label>BCA Transfer</label>
-          <input type="radio" />
+          <input type="checkbox" />
         </div>
         <div className="option-bank">
           <p>BNI</p>
           <label>BNI Transfer</label>
-          <input type="radio" />
+          <input type="checkbox" />
         </div>
         <div className="option-bank">
           <p>Mandiri</p>
           <label>Mandiri Transfer</label>
-          <input type="radio" />
+          <input type="checkbox" />
         </div>
       </div>
     </div>

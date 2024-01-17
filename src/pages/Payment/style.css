@@ -1,55 +1,51 @@
-.order-detail {
+.card {
   border-radius: 8px;
   background: #fff;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
   padding: 24px;
-  margin: 0 200px;
 }
 
-.order-detail h3 {
-  font-size: 14px;
-  font-weight: 700;
-  padding-bottom: 8px;
-  margin: 0;
-}
-
-.detail-container {
+.payment-flexbox {
   display: flex;
-  gap: 8px;
+  gap: 32px;
+  margin: 0 199px;
 }
 
-.detail-container div {
-  width: 240px;
-}
-
-.detail-container p {
-  font-size: 14px;
-  font-weight: 400;
-  margin: 0;
-}
-
-.bank-card {
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-  padding: 24px;
-}
-
-.bank-card h3 {
-  font-size: 14px;
-  font-weight: 700;
-  padding-bottom: 8px;
-  margin: 0;
-}
-
-.option-bank {
+.countdown-container {
   display: flex;
-  gap: 16px;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.price-card {
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-  padding: 24px;
+.payment-flexbox h3 {
+  font-size: 14px;
+  font-weight: 700px;
+  margin: 0;
+}
+
+.payment-flexbox p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.confirmation {
+  width: 405px;
+}
+
+.confirmation .preview-slip {
+  width: 296px;
+  height: 162px;
+  border-radius: 4px;
+  border: 1px dashed #d0d0d0;
+  background: #eee;
+}
+
+.confirmation button {
+  padding: 8px 12px;
+  border: transparent;
+  border-radius: 2px;
+  background: #5cb85f;
+  color: #fff;
+  font-weight: 700;
+  width: -webkit-fill-available;
 }

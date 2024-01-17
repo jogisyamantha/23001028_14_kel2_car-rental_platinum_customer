@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import FindCar from "../pages/FindCar";
 import Result from "../pages/Result";
 import CarDetail from "../pages/CarDetail";
+import Order from "../pages/Order";
 import Payment from "../pages/Payment";
 
 export const routes = createBrowserRouter([
@@ -24,6 +25,10 @@ export const routes = createBrowserRouter([
   },
   {
     path: "/order",
+    element: <Order />,
+  },
+  {
+    path: "/order/payment",
     element: <Payment />,
   },
 ]);

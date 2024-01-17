@@ -1,0 +1,46 @@
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 199px;
+}
+
+.back-navigation {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-navigation h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.steps {
+  display: flex;
+  gap: 16px;
+}
+
+.steps > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.steps p {
+  font-size: 12px;
+  margin: 0;
+}
+
+.steps .number {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+}
+
+.number p {
+  font-size: 10px;
+  text-align: center;
+  vertical-align: middle;
+}

@@ -1,0 +1,110 @@
+.order-detail {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  margin: 0 200px;
+}
+
+.order-detail h3 {
+  font-size: 14px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+.detail-container {
+  display: flex;
+  gap: 8px;
+}
+
+.detail-container div {
+  width: 240px;
+}
+
+.detail-container p {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.order-flexbox {
+  display: flex;
+  gap: 32px;
+  margin: 0 199px;
+}
+
+.bank-card {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+}
+
+.bank-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+.bank-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.option-bank {
+  display: flex;
+  gap: 16px;
+}
+
+.option-bank p {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  width: 61px;
+  padding: 6px 0;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.price-card {
+  width: 405px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+}
+
+.price-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.price-card p {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.price-card .title {
+  padding-bottom: 50px;
+}
+
+.price-card .space {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-card button {
+  padding: 8px 12px;
+  border: transparent;
+  border-radius: 2px;
+  background: #5cb85f;
+  color: #fff;
+  font-weight: 700;
+  width: -webkit-fill-available;
+}

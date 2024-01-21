@@ -1,6 +1,6 @@
-import imgService from "../../assets/images/img_service.png";
+import imgService from "../../assets/assets-homepage/img_service.png";
 import "./style.css";
-import iconTick from "../../assets/images/icon_tick.png";
+import iconTick from "../../assets/assets-homepage/icon_tick.png";
 
 const OurServices = () => {
   const ourServiceDatas = [

@@ -10,13 +10,13 @@ import Testimony from "../../components/Testimony";
 const Home = () => {
   return (
     <div className="landing-page-container">
-      {/* <Header hasBanner={true} />
+      <Header hasBanner={true} />
       <OurServices />
       <WhyUs />
       <Testimony />
       <Banner />
       <FAQ />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 };

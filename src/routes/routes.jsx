@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import FindCar from "../pages/FindCar";
 import Login from "../pages/Login";
+import ProtectedRoute from "./hoc/ProtectedRoute";
+import AuthRoute from "./hoc/AuthRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -10,10 +12,18 @@ export const routes = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <AuthRoute>
+        <Login />,
+      </AuthRoute>
+    ),
   },
-  {
-    path: "/find-car",
-    element: <FindCar />,
-  },
+  // {
+  //   path: "/payment",
+  //   element: (
+  //     <ProtectedRoute>
+  //       <Payment />
+  //     </ProtectedRoute>
+  //   ),
+  // },
 ]);

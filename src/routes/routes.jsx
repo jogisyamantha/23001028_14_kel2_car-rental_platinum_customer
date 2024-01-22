@@ -4,6 +4,9 @@ import FindCar from "../pages/FindCar";
 import Login from "../pages/Login";
 import ProtectedRoute from "./hoc/ProtectedRoute";
 import AuthRoute from "./hoc/AuthRoute";
+import Result from "../pages/Result";
+import CarDetail from "../pages/CarDetail";
+import Payment from "../pages/Payment";
 
 export const routes = createBrowserRouter([
   {
@@ -26,4 +29,16 @@ export const routes = createBrowserRouter([
   //     </ProtectedRoute>
   //   ),
   // },
+  {
+    path: "/car-list",
+    element: <Result />,
+  },
+  {
+    path: "/car-list/:id",
+    element: <CarDetail />,
+  },
+  {
+    path: "/order",
+    element: <Payment />,
+  },
 ]);

@@ -5,6 +5,7 @@ import { routes } from "../src/routes/routes.jsx";
 
 const App = () => {
   return <RouterProvider router={routes}></RouterProvider>;
+  // return <CarDetail />;
 };
 
 export default App;

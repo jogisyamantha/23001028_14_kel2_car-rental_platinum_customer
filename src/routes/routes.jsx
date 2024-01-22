@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import FindCar from "../pages/FindCar";
 import Login from "../pages/Login";
-import ProtectedRoute from "./hoc/ProtectedRoute";
-import AuthRoute from "./hoc/AuthRoute";
+import ProtectedRoute from "../hoc/ProtectedRoute";
+import AuthRoute from "../hoc/AuthRoute";
 import Result from "../pages/Result";
 import CarDetail from "../pages/CarDetail";
 import Payment from "../pages/Payment";
@@ -39,6 +39,10 @@ export const routes = createBrowserRouter([
   },
   {
     path: "/order",
-    element: <Payment />,
+    element: (
+      <ProtectedRoute>
+        <Payment />
+      </ProtectedRoute>
+    ),
   },
 ]);

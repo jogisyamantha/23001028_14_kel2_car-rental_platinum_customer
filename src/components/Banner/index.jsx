@@ -1,4 +1,4 @@
-import Button from "../Button";
+// import Button from "../Button";
 import "./style.css";
 
 const Banner = () => {
@@ -11,7 +11,7 @@ const Banner = () => {
           eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
         </div>
       </div>
-      <Button name={"Mulai Sewa Mobil"}></Button>
+      {/* <Button name={"Mulai Sewa Mobil"}></Button> */}
     </div>
   );
 };

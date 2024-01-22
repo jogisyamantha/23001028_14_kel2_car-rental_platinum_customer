@@ -1,8 +1,8 @@
-import rightButton from "../../assets/images/right_button.png";
-import leftButton from "../../assets/images/left_button.png";
+import rightButton from "../../assets/assets-homepage/right_button.png";
+import leftButton from "../../assets/assets-homepage/left_button.png";
 import "./style.css";
-import photo from "../../assets/images/img_photo.png";
-import rate from "../../assets/images/rate.png";
+import photo from "../../assets/assets-homepage/img_photo.png";
+import rate from "../../assets/assets-homepage/rate.png";
 
 const Carousel = () => {
   return (

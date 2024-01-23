@@ -19,6 +19,12 @@
   width: 370px;
 }
 
+.login-loader {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
 .login-title {
   display: flex;
   color: #000;

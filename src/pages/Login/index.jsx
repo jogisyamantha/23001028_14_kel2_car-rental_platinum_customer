@@ -75,12 +75,7 @@ const Login = () => {
         </div>
       </div>
       <div className="right-login">
-        <div className="right-login-container">
-          <div className="right-login-title">Binar Car Rental</div>
-          <div>
-            <img src={LoginPage} alt="" />
-          </div>
-        </div>
+        <div className="right-login-container"></div>
       </div>
     </div>
   );

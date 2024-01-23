@@ -78,19 +78,10 @@
 }
 
 .right-login-container {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-}
-
-.right-login-title {
-  color: #fff;
-  font-size: 48px;
-  font-weight: 500;
-  line-height: 150%; /* 72px */
-}
-
-.right-login img {
-  width: 400px;
-  height: auto;
+  background-image: url("../../assets/assets-login/landingpage.png");
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right bottom;
 }

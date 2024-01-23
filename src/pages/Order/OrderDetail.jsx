@@ -1,6 +1,7 @@
 import "./style.css";
 
-const OrderDetail = () => {
+const OrderDetail = ({ order }) => {
+  // console.log(order);
   return (
     <div className="order-detail">
       <h3>Detail Pesanan</h3>
@@ -15,11 +16,11 @@ const OrderDetail = () => {
         </div>
         <div>
           <p>Tanggal Mulai Sewa</p>
-          <p>01-01-2024</p>
+          <p>{order.start_rent_at}</p>
         </div>
         <div>
           <p>Tanggal Akhir Sewa</p>
-          <p>01-01-2024</p>
+          <p>{order.finish_rent_at}</p>
         </div>
       </div>
     </div>

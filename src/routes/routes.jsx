@@ -24,11 +24,11 @@ export const routes = createBrowserRouter([
     element: <CarDetail />,
   },
   {
-    path: "/order",
+    path: "/order/:id",
     element: <Order />,
   },
   {
-    path: "/order/payment",
+    path: "/order/:id/payment",
     element: <Payment />,
   },
 ]);

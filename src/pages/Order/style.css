@@ -39,6 +39,7 @@
   background: #fff;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
   padding: 24px;
+  height: fit-content;
 }
 
 .bank-card h3 {
@@ -48,15 +49,27 @@
   margin: 0;
 }
 
+.bank-card hr {
+  margin: 0;
+}
+
 .bank-card > div {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-top: 28px;
 }
 
 .option-bank {
   display: flex;
+  align-items: center;
   gap: 16px;
+}
+
+.option-bank label {
+  display: flex;
+  justify-content: space-between;
+  width: -webkit-fill-available;
 }
 
 .option-bank p {
@@ -97,14 +110,48 @@
 .price-card .space {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+}
+
+.green {
+  color: #5cb85f;
 }
 
 .price-card button {
   padding: 8px 12px;
+  margin-top: 24px;
   border: transparent;
   border-radius: 2px;
   background: #5cb85f;
   color: #fff;
   font-weight: 700;
   width: -webkit-fill-available;
+}
+
+.price-card button:disabled {
+  opacity: 0.3;
+}
+
+#price-first {
+  padding-top: 18px;
+}
+
+.price-list-detail h3 {
+  padding-top: 24px;
+}
+
+p.bold {
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + .hidden {
+  display: block;
 }

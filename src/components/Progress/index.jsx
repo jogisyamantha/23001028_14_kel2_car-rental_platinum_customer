@@ -14,12 +14,14 @@ const Progress = () => {
           </div>
           <p>Pilih Metode</p>
         </div>
+        <hr />
         <div>
           <div className="number">
             <p>2</p>
           </div>
           <p>Bayar</p>
         </div>
+        <hr />
         <div>
           <div className="number">
             <p>3</p>

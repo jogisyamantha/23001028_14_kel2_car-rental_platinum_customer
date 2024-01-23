@@ -10,12 +10,19 @@ import "./styles.css";
 const Result = () => {
   // const [name, setName] = useState("");
   // const [cars, setCars] = useState([]);
+  const ERROR_SCR =
+    "https://placehold.jp/c2c2c2/ffffff/286x160.png?text=%E2%9B%9F&css=%7B%22border-radius%22%3A%22%208px%22%7D";
   const dispatch = useDispatch();
   const cars = useSelector((state) => state.list.data);
 
   useEffect(() => {
     dispatch(getCarList());
   }, []);
+
+  const handleNotFound = (event) => {
+    event.target.src = ERROR_SCR;
+    event.target.onerror = null;
+  };
 
   return (
     <div>
@@ -27,7 +34,11 @@ const Result = () => {
       <div className="car-list-container">
         {cars.map((item) => (
           <div key={item.id} className="car-card">
-            <img src={item.image} />
+            {item.image ? (
+              <img src={item.image} onError={handleNotFound} />
+            ) : (
+              <img src={ERROR_SCR} />
+            )}
             <p>{item.name}</p>
             <h2>Rp. {item.price}/ hari</h2>
             <p>

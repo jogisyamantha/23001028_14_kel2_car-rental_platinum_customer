@@ -18,7 +18,7 @@
 
 .steps {
   display: flex;
-  gap: 16px;
+  gap: 12px;
 }
 
 .steps > div {
@@ -42,5 +42,9 @@
 .number p {
   font-size: 10px;
   text-align: center;
-  vertical-align: middle;
+}
+
+.steps hr {
+  border: 1px solid black;
+  width: 28px;
 }

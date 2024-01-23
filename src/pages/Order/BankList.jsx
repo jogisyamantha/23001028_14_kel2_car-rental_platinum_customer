@@ -1,6 +1,7 @@
+import { FaCheck } from "react-icons/fa";
 import "./style.css";
 
-const BankList = () => {
+const BankList = (props) => {
   return (
     <div className="bank-card">
       <h3>Pilih Bank Transfer</h3>
@@ -11,19 +12,46 @@ const BankList = () => {
       <div>
         <div className="option-bank">
           <p>BCA</p>
-          <label>BCA Transfer</label>
-          <input type="checkbox" />
+          <label htmlFor="bank1">
+            BCA Transfer
+            <input
+              onChange={props.handleCheck}
+              id="bank1"
+              name="bank"
+              type="radio"
+            />
+            <FaCheck className="green hidden" />
+          </label>
         </div>
+        <hr />
         <div className="option-bank">
           <p>BNI</p>
-          <label>BNI Transfer</label>
-          <input type="checkbox" />
+          <label htmlFor="bank2">
+            BNI Transfer
+            <input
+              onChange={props.handleCheck}
+              id="bank2"
+              name="bank"
+              type="radio"
+            />
+            <FaCheck className="green hidden" />
+          </label>
         </div>
+        <hr />
         <div className="option-bank">
           <p>Mandiri</p>
-          <label>Mandiri Transfer</label>
-          <input type="checkbox" />
+          <label htmlFor="bank3">
+            Mandiri Transfer
+            <input
+              onChange={props.handleCheck}
+              id="bank3"
+              name="bank"
+              type="radio"
+            />
+            <FaCheck className="green hidden" />
+          </label>
         </div>
+        <hr />
       </div>
     </div>
   );

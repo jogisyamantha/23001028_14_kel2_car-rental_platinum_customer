@@ -1,6 +1,6 @@
 import "./style.css";
 
-const PriceList = () => {
+const PriceList = ({ isChecked, order }) => {
   return (
     <div className="price-card">
       <div className="title">
@@ -8,12 +8,12 @@ const PriceList = () => {
         <p>medium</p>
       </div>
       <div className="space">
-        <h3>Total</h3>
-        <p>Rp. 1.000.000</p>
+        <p>Total</p>
+        <p className="bold">Rp. {order.total_price}</p>
       </div>
       <div>
-        <div>
-          <h3>Harga</h3>
+        <div className="price-list-detail">
+          <h3 id="price-first">Harga</h3>
           <div className="space">
             <p>Sewa Mobil</p>
             <p>Rp. 1.000.000</p>
@@ -22,18 +22,22 @@ const PriceList = () => {
             <h3>Biaya Lainnya</h3>
             <div className="space">
               <p>Pajak</p>
-              <p>Termasuk</p>
+              <p className="green">Termasuk</p>
             </div>
             <div className="space">
               <p>Biaya makan sopir</p>
-              <p>Termasuk</p>
+              <p className="green">Termasuk</p>
             </div>
             <h3>Belum Termasuk</h3>
             <p>Bensin</p>
             <p>Tol dan parkir</p>
           </div>
+          <div className="space">
+            <h3>Total</h3>
+            <p className="bold">Rp. {order.total_price}</p>
+          </div>
         </div>
-        <button>Bayar</button>
+        {isChecked ? <button>Bayar</button> : <button disabled>Bayar</button>}
       </div>
     </div>
   );

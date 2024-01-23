@@ -1,4 +1,10 @@
 .landing-page-container {
-  margin: auto;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header {
+  padding-top: 24px;
+  background: #f1f3ff;
   width: 100%;
 }

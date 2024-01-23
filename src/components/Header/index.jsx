@@ -6,7 +6,7 @@ const Header = ({ hasBanner }) => {
   return (
     <div className="header-container">
       <Navbar />
-      <div>{hasBanner && <HeaderBanner />}</div>
+      {/* <div>{hasBanner && <HeaderBanner />}</div> */}
     </div>
   );
 };

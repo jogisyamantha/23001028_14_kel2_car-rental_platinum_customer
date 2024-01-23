@@ -3,8 +3,8 @@ import { Outlet, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const AuthRoute = ({ children }) => {
-  const loginState = useSelector((state) => state.login);
-  if (loginState.success) {
+  const accessToken = localStorage.getItem("access_token");
+  if (accessToken) {
     return <Navigate to="/" />;
   }
 

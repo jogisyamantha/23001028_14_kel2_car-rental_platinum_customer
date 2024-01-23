@@ -4,14 +4,14 @@ import { postLogin } from "../../redux/features/loginSlice";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./style.css";
 import Logo from "../../assets/logo.png";
-import LoginPage from "../../assets/assets-login/landingpage.png";
+import { notification, Spin } from "antd";
 
 const Login = () => {
   const [loginPayload, setloginPayload] = useState({
     email: "",
     password: "",
   });
-
+  const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
   const loginState = useSelector((state) => state.login);
   const navigate = useNavigate();
@@ -22,21 +22,32 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    dispatch(postLogin(loginPayload));
+    if (loginPayload.email === "" || loginPayload.password === "") {
+      api["error"]({
+        message: "Upps!!",
+        description: "Isi semua field, jangan sampai kosong ya!!!",
+      });
+    } else dispatch(postLogin(loginPayload));
   };
 
   useEffect(() => {
-    if (loginState.success) {
+    if (loginState.success === true) {
       const queryParams = new URLSearchParams(location.search);
       const source = queryParams.get("source");
-      console.log("source", source);
       if (source === null) navigate(`/`);
       else navigate(`/${source}`);
+    } else if (loginState.success === false) {
+      api["error"]({
+        message: "Upps!!",
+        description:
+          "Sepertinya ada yang salah dengan email atau password mu, cek kembali ya!!!",
+      });
     }
   }, [loginState]);
 
   return (
     <div className="login-container">
+      {contextHolder}
       <div className="left-login">
         <div className="left-login-container">
           <div>
@@ -64,7 +75,13 @@ const Login = () => {
             </div>
           </div>
           <div>
-            <button onClick={handleLogin}>Sign In</button>
+            {loginState.loading ? (
+              <div className="login-loader">
+                <Spin />
+              </div>
+            ) : (
+              <button onClick={handleLogin}>Sign In</button>
+            )}
           </div>
           <div className="login-register-container">
             <div>Don't have an account? </div>
@@ -75,12 +92,7 @@ const Login = () => {
         </div>
       </div>
       <div className="right-login">
-        <div className="right-login-container">
-          <div className="right-login-title">Binar Car Rental</div>
-          <div>
-            <img src={LoginPage} alt="" />
-          </div>
-        </div>
+        <div className="right-login-container"></div>
       </div>
     </div>
   );

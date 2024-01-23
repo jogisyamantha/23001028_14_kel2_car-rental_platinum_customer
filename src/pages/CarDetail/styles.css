@@ -57,4 +57,29 @@
   background: #5cb85f;
   color: #fff;
   font-weight: 700;
+  width: -webkit-fill-available;
+}
+
+.car-detail-card button:disabled {
+  opacity: 0.3;
+}
+
+.type-flex {
+  display: flex;
+  gap: 8px;
+}
+
+.type-flex p {
+  font-size: 10px;
+}
+
+.car-name {
+  padding-top: 24px;
+}
+
+.car-name p:first-child {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  padding-bottom: 8px;
 }

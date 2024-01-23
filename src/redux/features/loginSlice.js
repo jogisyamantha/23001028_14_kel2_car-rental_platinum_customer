@@ -35,6 +35,7 @@ const loginSlice = createSlice({
       state.loading = false;
       state.success = true;
       state.email = action.payload.email;
+      localStorage.setItem("access_token", action.payload.access_token);
     });
     builder.addCase(postLogin.rejected, (state, action) => {
       state.loading = true;

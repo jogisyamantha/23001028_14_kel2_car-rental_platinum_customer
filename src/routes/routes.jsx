@@ -6,6 +6,7 @@ import ProtectedRoute from "../hoc/ProtectedRoute";
 import AuthRoute from "../hoc/AuthRoute";
 import Result from "../pages/Result";
 import CarDetail from "../pages/CarDetail";
+import Order from "../pages/Order";
 import Payment from "../pages/Payment";
 
 export const routes = createBrowserRouter([
@@ -44,5 +45,6 @@ export const routes = createBrowserRouter([
         <Payment />
       </ProtectedRoute>
     ),
+
   },
 ]);

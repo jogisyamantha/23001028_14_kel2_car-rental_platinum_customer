@@ -1,8 +1,9 @@
 import "./style.css";
 import Accordion from "../Accordion";
-import { faqData } from "../../datas/FAQData";
+// import { faqData } from "../../datas/FAQData";
 
 const FAQ = () => {
+  const faqData = ["1", "2"];
   return (
     <div id="faq" className="faq-container container-section">
       <div className="faq-container-left">

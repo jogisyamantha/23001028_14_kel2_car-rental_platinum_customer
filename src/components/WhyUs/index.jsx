@@ -1,8 +1,15 @@
 import WhyUsCard from "../WhyUsCard";
 import "./style.css";
-import { whyUsData } from "../../datas/WhyUsData";
+// import { whyUsData } from "../../datas/WhyUsData";
 
 const WhyUs = () => {
+  const whyUsData = [
+    "Sewa Mobil Dengan Supir di Bali 12 Jam",
+    "Sewa Mobil Lepas Kunci di Bali 24 Jam",
+    "Sewa Mobil Jangka Panjang Bulanan",
+    "Gratis Antar - Jemput Mobil di Bandara",
+    "Layanan Airport Transfer / Drop In Out",
+  ];
   return (
     <div id="why-us" className="whyus-container container-section">
       <div className="whyus-header">Why Us?</div>

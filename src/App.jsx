@@ -2,7 +2,6 @@ import "./App.css";
 import React from "react";
 import { RouterProvider } from "react-router-dom";
 import { routes } from "../src/routes/routes.jsx";
-import CarDetail from "./pages/CarDetail/index.jsx";
 
 const App = () => {
   return <RouterProvider router={routes}></RouterProvider>;

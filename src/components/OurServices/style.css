@@ -5,8 +5,9 @@
   font-family: Arial;
   font-style: normal;
   font-weight: 700;
-  margin: auto;
+  margin: 0 auto;
   gap: 86px;
+  margin-bottom: 100px;
 }
 
 .our-service-container-right {

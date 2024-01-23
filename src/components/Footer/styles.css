@@ -1,8 +1,9 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin: 0 126px 100px 173px;
+  /* align-items: flex-start; */
+  margin: 0 auto;
+  max-width: 1141px;
 }
 
 .address {

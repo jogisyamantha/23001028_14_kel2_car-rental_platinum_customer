@@ -9,7 +9,8 @@ const Testimony = () => {
         <p>Berbagai review positif dari para pelanggan kami</p>
       </div>
       <div>
-        <Carousel></Carousel>
+        {/* <Carousel></Carousel> */}
+        ini carousel
       </div>
     </div>
   );

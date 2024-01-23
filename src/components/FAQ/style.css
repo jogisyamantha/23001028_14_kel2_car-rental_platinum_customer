@@ -4,8 +4,9 @@
   font-style: normal;
   font-weight: 700;
   max-width: 1168px;
-  margin: auto;
+  margin: 0 auto;
   justify-content: space-between;
+  margin-bottom: 150px;
 }
 
 .faq-container-title {

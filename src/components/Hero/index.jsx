@@ -2,7 +2,7 @@ import "./style.css";
 import car from "../../assets/assets-homepage/img_car.png";
 // import Button from "../Button";
 
-const HeaderBanner = () => {
+const Hero = () => {
   return (
     <div className="header-banner-container">
       <div className="header-banner-container-left">
@@ -14,6 +14,9 @@ const HeaderBanner = () => {
           terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu
           untuk sewa mobil selama 24 jam.
         </p>
+        <div>
+          <button>Mulai Sewa Mobil</button>
+        </div>
         {/* <Button name={"Mulai Sewa Mobil"} to={"/search-car"}></Button> */}
       </div>
       <img src={car} alt="" />
@@ -21,4 +24,4 @@ const HeaderBanner = () => {
   );
 };
 
-export default HeaderBanner;
+export default Hero;

@@ -1,11 +1,14 @@
+import { Link } from "react-router-dom";
 import "./style.css";
+import CarType from "../../components/CarType";
 
 const PriceList = ({ isChecked, order }) => {
+  // console.log(order);
   return (
     <div className="price-card">
       <div className="title">
-        <h3>Innova</h3>
-        <p>medium</p>
+        <h3>{order.Car?.name}</h3>
+        <CarType type={order.Car?.category} />
       </div>
       <div className="space">
         <p>Total</p>
@@ -16,7 +19,7 @@ const PriceList = ({ isChecked, order }) => {
           <h3 id="price-first">Harga</h3>
           <div className="space">
             <p>Sewa Mobil</p>
-            <p>Rp. 1.000.000</p>
+            <p>Rp. {order.Car?.price}</p>
           </div>
           <div>
             <h3>Biaya Lainnya</h3>
@@ -37,7 +40,13 @@ const PriceList = ({ isChecked, order }) => {
             <p className="bold">Rp. {order.total_price}</p>
           </div>
         </div>
-        {isChecked ? <button>Bayar</button> : <button disabled>Bayar</button>}
+        {isChecked ? (
+          <Link to={`/order/${order.id}/payment`}>
+            <button>Bayar</button>
+          </Link>
+        ) : (
+          <button disabled>Bayar</button>
+        )}
       </div>
     </div>
   );

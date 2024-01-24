@@ -4,10 +4,17 @@ import axios from "axios";
 export const slipUpload = createAsyncThunk(
   "slip/slipUpload",
   async (id, payload) => {
+    const token = localStorage.getItem("access_token");
+    const config = {
+      headers: {
+        access_token: token,
+      },
+    };
     try {
       const res = await axios.put(
         `https://api-car-rental.binaracademy.org/customer/order/${id}/slip`,
-        payload
+        payload,
+        config
       );
       const data = res.data;
       return data;
@@ -18,8 +25,7 @@ export const slipUpload = createAsyncThunk(
 );
 
 const initialState = {
-  slip: "",
-  prevSlip: "",
+  data: {},
 };
 
 export const slipUploadSlice = createSlice({
@@ -28,7 +34,7 @@ export const slipUploadSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(slipUpload.fulfilled, (state, action) => {
-      state.slip = action.payload;
+      state.data = action.payload;
     });
   },
 });

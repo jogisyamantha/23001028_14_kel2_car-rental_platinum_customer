@@ -22,14 +22,15 @@ export const routes = createBrowserRouter([
       </AuthRoute>
     ),
   },
-  // {
-  //   path: "/payment",
-  //   element: (
-  //     <ProtectedRoute>
-  //       <Payment />
-  //     </ProtectedRoute>
-  //   ),
-  // },
+  {
+    path: "/order/:id/payment",
+    element: (
+      // <ProtectedRoute>
+      //   <Payment />
+      // </ProtectedRoute>
+      <Payment />
+    ),
+  },
   {
     path: "/car-list",
     element: <Result />,
@@ -39,12 +40,12 @@ export const routes = createBrowserRouter([
     element: <CarDetail />,
   },
   {
-    path: "/order",
+    path: "/order/:id",
     element: (
-      <ProtectedRoute>
-        <Payment />
-      </ProtectedRoute>
+      // <ProtectedRoute>
+      //   <Order />
+      // </ProtectedRoute>
+      <Order />
     ),
-
   },
 ]);

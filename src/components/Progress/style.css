@@ -6,13 +6,18 @@
 
 .back-navigation {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
 }
 
 .back-navigation h3 {
   font-size: 14px;
   font-weight: 700;
+  margin: 0;
+}
+
+.back-navigation p {
+  font-size: 12px;
   margin: 0;
 }
 

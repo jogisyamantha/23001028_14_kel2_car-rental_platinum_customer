@@ -19,11 +19,11 @@ const BankTransfer = () => {
         </div>
         <div className="bank-container">
           <label>Nomor Rekening</label>
-          <input type="number" value="54104257877"></input>
+          <input type="text" value="54104257877"></input>
         </div>
         <div className="bank-container">
           <label>Total Bayar</label>
-          <input type="number" value="3500000"></input>
+          <input type="text" value="3500000"></input>
         </div>
       </div>
       <div className="transfer-instruction card">

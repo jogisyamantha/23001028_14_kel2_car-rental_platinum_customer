@@ -17,6 +17,12 @@
   justify-content: space-between;
 }
 
+.countdown-container h3 {
+  font-size: 14px;
+  font-weight: 700;
+  padding-bottom: 15px;
+}
+
 .payment-flexbox h3 {
   font-size: 14px;
   font-weight: 700px;
@@ -44,6 +50,11 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.bank-account h3 {
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .bank-account p {

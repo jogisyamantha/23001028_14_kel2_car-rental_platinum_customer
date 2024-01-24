@@ -1,11 +1,23 @@
 import { IoMdArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
-const Progress = () => {
+const Progress = ({ orderId }) => {
+  const navigate = useNavigate();
+  const handleBack = () => {
+    navigate(-1);
+  };
   return (
     <div className="progress-container">
       <div className="back-navigation">
-        <IoMdArrowBack size={24} />
-        <h3>Pembayaran</h3>
+        <IoMdArrowBack
+          style={{ cursor: "pointer" }}
+          onClick={handleBack}
+          size={24}
+        />
+        <div>
+          <h3>Pembayaran</h3>
+          {orderId ? <p>ORDER ID: {orderId}</p> : null}
+        </div>
       </div>
       <div className="steps">
         <div>

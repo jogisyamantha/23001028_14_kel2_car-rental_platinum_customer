@@ -1,16 +1,28 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Progress from "../../components/Progress";
 import BankTransfer from "./BankTransfer";
+import { slipUpload } from "../../redux/features/slipUploadSlice";
 import { CiImageOn } from "react-icons/ci";
+import { Statistic } from "antd";
 import "./style.css";
+import dayjs from "dayjs";
 
 const Payment = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [file, setFile] = useState(null);
   const [prevFile, setPrevFile] = useState(null);
   const [isDisplay, setIsDisplay] = useState(false);
+  const { Countdown } = Statistic;
+  const dispatch = useDispatch();
+  const param = useParams();
+
+  const deadline = dayjs().add(1, "day");
+  const deadlineHour = dayjs().add(1, "day").format("HH:mm");
+  const deadlineMinute = dayjs().add(10, "minute");
 
   const handleFile = (event) => {
     const file = event.target.files[0];
@@ -19,18 +31,34 @@ const Payment = () => {
     setIsDisplay(true);
   };
 
+  const handleUpload = () => {
+    const payload = {
+      slip: file,
+    };
+    dispatch(slipUpload(param.id, payload));
+  };
+
   return (
     <>
       <Navbar />
-      <Progress />
+      <Progress orderId={param.id} />
       <div className="payment-flexbox">
         <div>
           <div className="countdown-container card">
             <div>
               <h3>Selesaikan Pembayaran Sebelum</h3>
-              <p>Rabu, 14 Agustus 2022</p>
+              <p>
+                {deadline.format("dddd, DD MMM YYYY")} jam {deadlineHour} WIB
+              </p>
             </div>
-            <div>23:59</div>
+            <Countdown
+              value={deadline}
+              valueStyle={{
+                fontSize: "18px",
+                backgroundColor: "red",
+                color: "white",
+              }}
+            />
           </div>
           <BankTransfer />
         </div>
@@ -49,7 +77,15 @@ const Payment = () => {
             <div>
               <div className="countdown-container">
                 <h3>Konfirmasi Pembayaran</h3>
-                <p>10:00</p>
+                <Countdown
+                  value={deadlineMinute}
+                  format="mm : ss"
+                  valueStyle={{
+                    fontSize: "14px",
+                    backgroundColor: "red",
+                    color: "white",
+                  }}
+                />
               </div>
               <p>
                 Terima kasih telah melakukan konfirmasi pembayaran. Pembayaranmu
@@ -79,7 +115,7 @@ const Payment = () => {
                   </label>
                 )}
               </div>
-              <button>Upload</button>
+              <button onClick={handleUpload}>Upload</button>
             </div>
           </div>
         )}

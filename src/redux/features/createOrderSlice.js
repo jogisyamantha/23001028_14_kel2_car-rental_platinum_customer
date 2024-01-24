@@ -4,12 +4,20 @@ import axios from "axios";
 export const createOrder = createAsyncThunk(
   "createOrder/createOrder",
   async (payload) => {
+    const token = localStorage.getItem("access_token");
+    const config = {
+      headers: {
+        access_token: token,
+      },
+    };
     try {
       const res = await axios.post(
-        "https://api-car-rental.binaracademy.org/customer/order",
-        payload
+        `https://api-car-rental.binaracademy.org/customer/order`,
+        payload,
+        config
       );
       const data = res.data;
+      console.log(data);
       return data;
     } catch (error) {
       console.log(error);
@@ -19,7 +27,12 @@ export const createOrder = createAsyncThunk(
 
 const initialState = {
   loading: false,
-  isSuccess: false,
+  data: {
+    id: null,
+    start_rent_at: "",
+    finish_rent_at: "",
+    carId: null,
+  },
 };
 
 export const createOrderSlice = createSlice({
@@ -29,7 +42,7 @@ export const createOrderSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(createOrder.fulfilled, (state, action) => {
       state.loading = false;
-      state.isSuccess = true;
+      state.data = action.payload;
     });
   },
 });

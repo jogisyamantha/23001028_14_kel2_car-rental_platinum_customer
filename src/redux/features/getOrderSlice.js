@@ -1,17 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getOrder = createAsyncThunk("getOrder/getOrder", async () => {
-  // const token = localStorage.getItem('accessToken')
+export const getOrder = createAsyncThunk("getOrder/getOrder", async (id) => {
+  const token = localStorage.getItem("access_token");
   const config = {
     headers: {
-      access_token:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc",
+      access_token: token,
+      // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc",
     },
   };
   try {
     const res = await axios.get(
-      `https://api-car-rental.binaracademy.org/customer/order/49`,
+      `https://api-car-rental.binaracademy.org/customer/order/${id}`,
       config
     );
     const data = res.data;

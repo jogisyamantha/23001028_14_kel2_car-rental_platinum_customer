@@ -25,10 +25,9 @@ export const routes = createBrowserRouter([
   {
     path: "/order/:id/payment",
     element: (
-      // <ProtectedRoute>
-      //   <Payment />
-      // </ProtectedRoute>
-      <Payment />
+      <ProtectedRoute>
+        <Payment />
+      </ProtectedRoute>
     ),
   },
   {
@@ -42,10 +41,9 @@ export const routes = createBrowserRouter([
   {
     path: "/order/:id",
     element: (
-      // <ProtectedRoute>
-      //   <Order />
-      // </ProtectedRoute>
-      <Order />
+      <ProtectedRoute>
+        <Order />
+      </ProtectedRoute>
     ),
   },
 ]);

@@ -1,11 +1,9 @@
-import "./App.css";
 import React from "react";
 import { RouterProvider } from "react-router-dom";
 import { routes } from "../src/routes/routes.jsx";
 
 const App = () => {
   return <RouterProvider router={routes}></RouterProvider>;
-  // return <CarDetail />;
 };
 
 export default App;

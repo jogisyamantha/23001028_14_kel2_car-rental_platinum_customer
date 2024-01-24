@@ -11,15 +11,16 @@ export const postLogin = createAsyncThunk(
       );
       return res.data;
     } catch (error) {
-      return rejectWithValue(error);
+      // throw new Error(error.response.data.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
 
 const initialState = {
   email: "",
-  loading: false,
-  success: false,
+  loading: null,
+  success: null,
   error: "",
 };
 
@@ -35,11 +36,12 @@ const loginSlice = createSlice({
       state.loading = false;
       state.success = true;
       state.email = action.payload.email;
+      localStorage.setItem("access_token", action.payload.access_token);
     });
     builder.addCase(postLogin.rejected, (state, action) => {
-      state.loading = true;
+      state.loading = false;
       state.success = false;
-      state.error = action.error.message;
+      state.error = action.payload;
     });
   },
 });

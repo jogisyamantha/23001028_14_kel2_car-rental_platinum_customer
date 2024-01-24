@@ -4,13 +4,17 @@ import WhyUs from "../../components/WhyUs";
 import Banner from "../../components/Banner";
 import FAQ from "../../components/FAQ";
 import OurServices from "../../components/OurServices";
-import Header from "../../components/Header";
 import Testimony from "../../components/Testimony";
+import Navbar from "../../components/Navbar";
+import Hero from "../../components/Hero";
 
 const Home = () => {
   return (
     <div className="landing-page-container">
-      <Header hasBanner={true} />
+      <div className="header">
+        <Navbar />
+        <Hero />
+      </div>
       <OurServices />
       <WhyUs />
       <Testimony />

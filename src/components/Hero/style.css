@@ -23,6 +23,15 @@
   line-height: 150%;
 }
 
+.header-banner-container button {
+  padding: 8px 12px;
+  border: transparent;
+  border-radius: 2px;
+  background: #5cb85f;
+  color: #fff;
+  font-weight: 700;
+}
+
 @media screen and (max-width: 600px) {
   .header-banner-container {
     flex-direction: column;

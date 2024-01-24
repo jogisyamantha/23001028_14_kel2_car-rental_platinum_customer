@@ -1,7 +1,8 @@
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  margin: 24px 136px;
+  margin: 0 auto;
+  width: 1168px;
 }
 
 .navbar-container img {

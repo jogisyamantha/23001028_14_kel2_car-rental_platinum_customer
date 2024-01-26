@@ -18,7 +18,7 @@ const Payment = () => {
   const [isDisplay, setIsDisplay] = useState(false);
   const { Countdown } = Statistic;
   const dispatch = useDispatch();
-  const param = useParams();
+  const { id } = useParams();
 
   const deadline = dayjs().add(1, "day");
   const deadlineHour = dayjs().add(1, "day").format("HH:mm");
@@ -32,16 +32,16 @@ const Payment = () => {
   };
 
   const handleUpload = () => {
-    const payload = {
-      slip: file,
-    };
-    dispatch(slipUpload(param.id, payload));
+    const form = new FormData();
+    form.append("slip", file);
+
+    dispatch(slipUpload(id, form));
   };
 
   return (
     <>
       <Navbar />
-      <Progress orderId={param.id} />
+      <Progress orderId={id} />
       <div className="payment-flexbox">
         <div>
           <div className="countdown-container card">

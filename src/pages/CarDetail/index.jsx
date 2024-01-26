@@ -19,7 +19,6 @@ const CarDetail = () => {
   const dispatch = useDispatch();
   const { RangePicker } = DatePicker;
   const { car } = useSelector((state) => state.detail);
-  const { data } = useSelector((state) => state.createOrder);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   useEffect(() => {
@@ -36,14 +35,14 @@ const CarDetail = () => {
     setEndDate(dateString[1]);
   };
 
-  const hanldeSubmit = () => {
+  const handleSubmit = () => {
     const payload = {
       start_rent_at: startDate,
       finish_rent_at: endDate,
       car_id: car.id,
     };
     dispatch(createOrder(payload));
-    navigate(`/order/${data.id}`);
+    navigate("/order");
   };
 
   return (
@@ -76,7 +75,7 @@ const CarDetail = () => {
             <p>Total:</p>
             <p>Rp. {car.price}</p>
           </div>
-          <button onClick={hanldeSubmit}>Lanjutkan Pembayaran</button>
+          <button onClick={handleSubmit}>Lanjutkan Pembayaran</button>
         </div>
       </div>
       <Footer />

@@ -42,6 +42,7 @@ export const createOrderSlice = createSlice({
     builder.addCase(createOrder.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload;
+      // console.log(state.data);
     });
   },
 });

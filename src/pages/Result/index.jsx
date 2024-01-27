@@ -8,8 +8,6 @@ import SearchBar from "../../components/SearchBar";
 import "./styles.css";
 
 const Result = () => {
-  // const [name, setName] = useState("");
-  // const [cars, setCars] = useState([]);
   const ERROR_SCR =
     "https://placehold.jp/c2c2c2/ffffff/286x160.png?text=%E2%9B%9F&css=%7B%22border-radius%22%3A%22%208px%22%7D";
   const dispatch = useDispatch();

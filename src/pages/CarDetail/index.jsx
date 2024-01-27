@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { carById } from "../../redux/features/carDetailSlice";
 import { createOrder } from "../../redux/features/createOrderSlice";
 import { DatePicker } from "antd";
+import dayjs from "dayjs";
 
 const CarDetail = () => {
   const ERROR_SCR =
@@ -21,6 +22,7 @@ const CarDetail = () => {
   const { car } = useSelector((state) => state.detail);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+
   useEffect(() => {
     dispatch(carById(param.id));
   }, []);
@@ -33,6 +35,10 @@ const CarDetail = () => {
   const handleChange = (date, dateString) => {
     setStartDate(dateString[0]);
     setEndDate(dateString[1]);
+  };
+
+  const disabledDate = (current) => {
+    return current && current < dayjs().endOf("day");
   };
 
   const handleSubmit = () => {
@@ -66,7 +72,8 @@ const CarDetail = () => {
           <div className="form-date">
             <p>Tentukan lama sewa mobil (max. 7 hari)</p>
             <RangePicker
-              disabledTime={function () {}}
+              popupStyle={{ color: "info" }}
+              disabledDate={disabledDate}
               placeholder={["Pilih tanggal"]}
               onChange={(date, dateString) => handleChange(date, dateString)}
             />

@@ -1,9 +1,11 @@
+import { useSelector } from "react-redux";
 import "./style.css";
 const BankTransfer = () => {
+  const { bank } = useSelector((state) => state.bank);
   const stepsList = [
     "Masukkan kartu ATM, lalu PIN",
-    "Pilih menu Transaksi Lainnya Transfer Ke Rek BCA Virtual Account",
-    "Masukkan nomor BCA Virtual Account: 70020+Order ID Contoh: No. Peserta: 12345678, maka ditulis 7002012345678",
+    `Pilih menu Transaksi Lainnya Transfer Ke Rek ${bank} Virtual Account`,
+    `Masukkan nomor ${bank} Virtual Account: 70020+Order ID Contoh: No. Peserta: 12345678, maka ditulis 7002012345678`,
     "Layar ATM akan menampilkan konfirmasi, ikuti instruksi untuk menyelesaikan transaksi",
     "Ambil dan simpanlah bukti transaksi tersebut",
   ];
@@ -12,9 +14,9 @@ const BankTransfer = () => {
       <div className="bank-account card">
         <h3>Lakukan Transfer Ke</h3>
         <div>
-          <p className="bank-name">BCA</p>
+          <p className="bank-name">{bank}</p>
           <p>
-            BCA Transfer <br /> a.n Binar Car Rental
+            {bank} Transfer <br /> a.n Binar Car Rental
           </p>
         </div>
         <div className="bank-container">

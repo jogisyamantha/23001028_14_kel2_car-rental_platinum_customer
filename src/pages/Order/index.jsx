@@ -24,7 +24,7 @@ const Order = () => {
   }, []);
 
   // console.log(data.id);
-  console.log(order);
+  // console.log(order);
 
   return (
     <div>

@@ -6,7 +6,6 @@ export const getOrder = createAsyncThunk("getOrder/getOrder", async (id) => {
   const config = {
     headers: {
       access_token: token,
-      // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc",
     },
   };
   try {
@@ -35,6 +34,7 @@ export const getOrderSlice = createSlice({
     builder.addCase(getOrder.fulfilled, (state, action) => {
       state.isLoading = false;
       state.data = action.payload;
+      console.log(state.data);
     });
   },
 });

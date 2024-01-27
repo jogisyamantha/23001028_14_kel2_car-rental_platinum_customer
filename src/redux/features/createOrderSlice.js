@@ -17,7 +17,6 @@ export const createOrder = createAsyncThunk(
         config
       );
       const data = res.data;
-      console.log(data);
       return data;
     } catch (error) {
       console.log(error);
@@ -31,7 +30,7 @@ const initialState = {
     id: null,
     start_rent_at: "",
     finish_rent_at: "",
-    carId: null,
+    carId: 0,
   },
 };
 
@@ -43,6 +42,7 @@ export const createOrderSlice = createSlice({
     builder.addCase(createOrder.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload;
+      // console.log(state.data);
     });
   },
 });

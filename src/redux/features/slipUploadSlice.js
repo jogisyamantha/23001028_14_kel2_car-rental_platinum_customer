@@ -3,39 +3,48 @@ import axios from "axios";
 
 export const slipUpload = createAsyncThunk(
   "slip/slipUpload",
-  async (id, payload) => {
+  async ({ id, formData }) => {
+    const api = `https://api-car-rental.binaracademy.org/customer/order/${id}/slip`;
     const token = localStorage.getItem("access_token");
     const config = {
       headers: {
         access_token: token,
+        "Content-Type": "multipart/form-data",
       },
     };
     try {
-      const res = await axios.put(
-        `https://api-car-rental.binaracademy.org/customer/order/${id}/slip`,
-        payload,
-        config
-      );
+      const res = await axios.put(api, formData, config);
       const data = res.data;
-      return data;
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
   }
 );
 
-const initialState = {
-  data: {},
-};
-
 export const slipUploadSlice = createSlice({
   name: "slip",
-  initialState,
+  initialState: {
+    data: {
+      id: null,
+      total_price: null,
+      slip: "",
+    },
+    isLoading: false,
+  },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(slipUpload.fulfilled, (state, action) => {
-      state.data = action.payload;
-    });
+    builder
+      .addCase(slipUpload.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(slipUpload.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.data = action?.payload;
+      })
+      .addCase(slipUpload.rejected, (state) => {
+        state.isLoading = false;
+      });
   },
 });
 

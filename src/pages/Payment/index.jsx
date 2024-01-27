@@ -5,9 +5,9 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Progress from "../../components/Progress";
 import BankTransfer from "./BankTransfer";
-import { slipUpload } from "../../redux/features/slipUploadSlice";
 import { CiImageOn } from "react-icons/ci";
 import { Statistic } from "antd";
+import { slipUpload } from "../../redux/features/slipUploadSlice";
 import "./style.css";
 import dayjs from "dayjs";
 
@@ -17,8 +17,8 @@ const Payment = () => {
   const [prevFile, setPrevFile] = useState(null);
   const [isDisplay, setIsDisplay] = useState(false);
   const { Countdown } = Statistic;
+  const { id } = useParams();
   const dispatch = useDispatch();
-  const param = useParams();
 
   const deadline = dayjs().add(1, "day");
   const deadlineHour = dayjs().add(1, "day").format("HH:mm");
@@ -31,17 +31,16 @@ const Payment = () => {
     setIsDisplay(true);
   };
 
-  const handleUpload = () => {
-    const payload = {
-      slip: file,
-    };
-    dispatch(slipUpload(param.id, payload));
+  const handleUpload = async () => {
+    const formData = new FormData();
+    formData.append("slip", file);
+    dispatch(slipUpload({ id, formData }));
   };
 
   return (
     <>
       <Navbar />
-      <Progress orderId={param.id} />
+      <Progress orderId={id} />
       <div className="payment-flexbox">
         <div>
           <div className="countdown-container card">

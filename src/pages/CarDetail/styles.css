@@ -67,10 +67,12 @@
 .type-flex {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
 .type-flex p {
   font-size: 10px;
+  margin: 0;
 }
 
 .car-name {
@@ -82,4 +84,13 @@
   font-weight: 700;
   margin: 0;
   padding-bottom: 8px;
+}
+
+.form-date {
+  padding-top: 18px;
+}
+
+.form-date p {
+  font-size: 12px;
+  margin: 0;
 }

@@ -27,29 +27,41 @@ const Login = () => {
         message: "Upps!!",
         description: "Isi semua field, jangan sampai kosong ya!!!",
       });
-    } else dispatch(postLogin(loginPayload));
+    } else {
+      dispatch(postLogin(loginPayload))
+        .unwrap()
+        .then((response) => {
+          // handle successful login
+          console.log(response);
+          const queryParams = new URLSearchParams(location.search);
+          const source = queryParams.get("source");
+          if (source === null) navigate(`/`);
+          else navigate(`/${source}`);
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+          api["error"]({
+            message: "Upps!!",
+            description:
+              "Sepertinya ada yang salah dengan email atau password mu, cek kembali ya!!!",
+          });
+        });
+    }
   };
 
-  useEffect(() => {
-    if (loginState.success === true) {
-      const queryParams = new URLSearchParams(location.search);
-      const source = queryParams.get("source");
-      if (source === null) navigate(`/`);
-      else navigate(`/${source}`);
-    } else if (loginState.success === false) {
-      api["error"]({
-        message: "Upps!!",
-        description:
-          "Sepertinya ada yang salah dengan email atau password mu, cek kembali ya!!!",
-      });
-    }
-  }, [loginState]);
+  // useEffect(() => {
+  //   if (loginState.success === true) {
+  //   } else if (loginState.success === false) {
+  //   }
+  // }, [loginState]);
 
   return (
     <div className="login-container">
       {contextHolder}
       <div className="left-login">
         <div className="left-login-container">
+          {/* modal === true ? <PopUpModal> : */}
           <div>
             <img src={Logo} alt="dummy-logo" />
           </div>

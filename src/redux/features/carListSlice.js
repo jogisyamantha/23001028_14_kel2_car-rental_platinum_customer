@@ -1,22 +1,29 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getCarList = createAsyncThunk("list/getCarList", async () => {
-  try {
-    const res = await axios.get(
-      `https://api-car-rental.binaracademy.org/customer/v2/car?page=1&pageSize=6`
-    );
-    const data = res.data.cars;
-    // console.log(data);
-    return data;
-  } catch (error) {
-    console.log(error);
+export const getCarList = createAsyncThunk(
+  "list/getCarList",
+  async (page = 1) => {
+    try {
+      const res = await axios.get(
+        `https://api-car-rental.binaracademy.org/customer/v2/car?page=${page}&pageSize=6`
+      );
+      const data = res.data;
+      // console.log(data);
+      return data;
+    } catch (error) {
+      return error.response.data;
+    }
   }
-});
+);
 
 const initialState = {
   isLoading: false,
-  data: [],
+  data: {
+    cars: [],
+    count: 0,
+  },
+  error: null,
 };
 
 export const carListSlice = createSlice({
@@ -30,11 +37,13 @@ export const carListSlice = createSlice({
       })
       .addCase(getCarList.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.data = action.payload;
-        // console.log(state.data);
+        state.data.cars = action.payload.cars;
+        state.data.count = action.payload.count;
+        console.log(state.data.count);
       })
-      .addCase(getCarList.rejected, (state) => {
+      .addCase(getCarList.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action?.error?.message;
       });
   },
 });

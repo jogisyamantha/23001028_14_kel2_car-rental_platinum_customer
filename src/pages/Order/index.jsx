@@ -6,21 +6,22 @@ import OrderDetail from "./OrderDetail";
 import PriceList from "./PriceList";
 import BankList from "./BankList";
 import { getOrder } from "../../redux/features/getOrderSlice";
+import { useParams } from "react-router-dom";
 import "./style.css";
 import { useState, useEffect } from "react";
 
 const Order = () => {
   const [isChecked, setIsChecked] = useState(false);
   const order = useSelector((state) => state.getOrder.data);
-  const { data } = useSelector((state) => state.createOrder);
   const dispatch = useDispatch();
+  const param = useParams();
 
   const handleCheck = () => {
     setIsChecked(!isChecked);
   };
 
   useEffect(() => {
-    dispatch(getOrder(8330));
+    dispatch(getOrder(param.id));
   }, []);
 
   // console.log(data.id);
@@ -29,7 +30,7 @@ const Order = () => {
   return (
     <div>
       <Navbar />
-      <Progress />
+      <Progress progress={1} />
       <OrderDetail order={order} />
       <div className="order-flexbox">
         <BankList handleCheck={handleCheck} />

@@ -6,7 +6,7 @@ import Navbar from "../../components/Navbar";
 import Progress from "../../components/Progress";
 import BankTransfer from "./BankTransfer";
 import { CiImageOn } from "react-icons/ci";
-import { Statistic } from "antd";
+import { Statistic, notification } from "antd";
 import { slipUpload } from "../../redux/features/slipUploadSlice";
 import "./style.css";
 import dayjs from "dayjs";
@@ -16,6 +16,7 @@ const Payment = () => {
   const [file, setFile] = useState(null);
   const [prevFile, setPrevFile] = useState(null);
   const [isDisplay, setIsDisplay] = useState(false);
+  const [api, contextHolder] = notification.useNotification();
   const { Countdown } = Statistic;
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -32,6 +33,12 @@ const Payment = () => {
   };
 
   const handleUpload = async () => {
+    if (!file) {
+      api.error({
+        message: "Error!!",
+        description: "Silahkan upload slip pembayaran",
+      });
+    }
     const formData = new FormData();
     formData.append("slip", file);
     dispatch(slipUpload({ id, formData }));
@@ -39,8 +46,9 @@ const Payment = () => {
 
   return (
     <>
+      {contextHolder}
       <Navbar />
-      <Progress orderId={id} />
+      <Progress orderId={id} progress={2} />
       <div className="payment-flexbox">
         <div>
           <div className="countdown-container card">
@@ -79,6 +87,7 @@ const Payment = () => {
                 <Countdown
                   value={deadlineMinute}
                   format="mm : ss"
+                  onFinish={() => setIsConfirmed(false)}
                   valueStyle={{
                     fontSize: "14px",
                     backgroundColor: "red",

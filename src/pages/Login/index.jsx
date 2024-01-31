@@ -30,9 +30,8 @@ const Login = () => {
     } else {
       dispatch(postLogin(loginPayload))
         .unwrap()
-        .then((response) => {
+        .then((res) => {
           // handle successful login
-          console.log(response);
           const queryParams = new URLSearchParams(location.search);
           const source = queryParams.get("source");
           if (source === null) navigate(`/`);
@@ -40,7 +39,6 @@ const Login = () => {
         })
         .catch((error) => {
           // handle error
-          console.log(error);
           api["error"]({
             message: "Upps!!",
             description:
@@ -49,12 +47,6 @@ const Login = () => {
         });
     }
   };
-
-  // useEffect(() => {
-  //   if (loginState.success === true) {
-  //   } else if (loginState.success === false) {
-  //   }
-  // }, [loginState]);
 
   return (
     <div className="login-container">
@@ -98,7 +90,9 @@ const Login = () => {
           <div className="login-register-container">
             <div>Don't have an account? </div>
             <div>
-              <Link to={"/register"}>Sign up for free</Link>
+              <Link to={"/register"} className="login-link">
+                Sign up for free
+              </Link>
             </div>
           </div>
         </div>

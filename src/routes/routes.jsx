@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import FindCar from "../pages/FindCar";
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 import ProtectedRoute from "../hoc/ProtectedRoute";
 import AuthRoute from "../hoc/AuthRoute";
 import Result from "../pages/Result";
@@ -19,6 +20,14 @@ export const routes = createBrowserRouter([
     element: (
       <AuthRoute>
         <Login />
+      </AuthRoute>
+    ),
+  },
+  {
+    path: "/register",
+    element: (
+      <AuthRoute>
+        <Register />
       </AuthRoute>
     ),
   },

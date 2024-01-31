@@ -16,7 +16,7 @@
   flex-direction: column;
   gap: 32px;
   margin: 0 auto;
-  width: 370px;
+  max-width: 370px;
 }
 
 .login-loader {
@@ -90,4 +90,28 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right bottom;
+}
+
+.login-link {
+  color: #0d28a6;
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  text-decoration-line: underline;
+}
+
+@media screen and (max-width: 800px) {
+  .right-login {
+    display: none;
+  }
+
+  .left-login-container {
+    max-width: 100%;
+  }
+
+  .login-form {
+    max-width: 100%;
+  }
 }

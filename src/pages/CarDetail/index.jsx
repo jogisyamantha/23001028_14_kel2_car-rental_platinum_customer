@@ -9,7 +9,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { carById } from "../../redux/features/carDetailSlice";
 import { createOrder } from "../../redux/features/createOrderSlice";
-import { DatePicker } from "antd";
+import { DatePicker, notification, ConfigProvider } from "antd";
 import dayjs from "dayjs";
 
 const CarDetail = () => {
@@ -19,6 +19,7 @@ const CarDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { RangePicker } = DatePicker;
+  const [api, contextHolder] = notification.useNotification();
   const { car } = useSelector((state) => state.detail);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -42,17 +43,29 @@ const CarDetail = () => {
   };
 
   const handleSubmit = () => {
-    const payload = {
-      start_rent_at: startDate,
-      finish_rent_at: endDate,
-      car_id: car.id,
-    };
-    dispatch(createOrder(payload));
-    navigate("/order");
+    if (startDate == "" || endDate == "") {
+      api.error({
+        message: "Error!!",
+        description: "Silahkan isi tanggal sewa",
+      });
+    } else {
+      const payload = {
+        start_rent_at: startDate,
+        finish_rent_at: endDate,
+        car_id: car.id,
+      };
+      dispatch(createOrder(payload)).then((response) => {
+        const id = response.payload.id;
+        navigate(`/order/${id}`);
+        // console.log(response.payload.id);
+      });
+    }
+    // console.log(startDate, endDate);
   };
 
   return (
     <div>
+      {contextHolder}
       <Navbar />
       <SearchBar />
       <div className="car-detail">
@@ -71,12 +84,21 @@ const CarDetail = () => {
           </div>
           <div className="form-date">
             <p>Tentukan lama sewa mobil (max. 7 hari)</p>
-            <RangePicker
-              popupStyle={{ color: "info" }}
-              disabledDate={disabledDate}
-              placeholder={["Pilih tanggal"]}
-              onChange={(date, dateString) => handleChange(date, dateString)}
-            />
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: "#5cb85f",
+                },
+              }}
+            >
+              <RangePicker
+                allowEmpty={[false, false]}
+                popupStyle={{ color: "info" }}
+                disabledDate={disabledDate}
+                placeholder={["Pilih tanggal"]}
+                onChange={(date, dateString) => handleChange(date, dateString)}
+              />
+            </ConfigProvider>
           </div>
           <div className="price-container">
             <p>Total:</p>

@@ -17,13 +17,14 @@ export const getOrder = createAsyncThunk("getOrder/getOrder", async (id) => {
     // console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
+    return error.response.data;
   }
 });
 
 const initialState = {
   isLoading: false,
   data: {},
+  error: null,
 };
 
 export const getOrderSlice = createSlice({
@@ -31,10 +32,17 @@ export const getOrderSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(getOrder.pending, (state) => {
+      state.isLoading = true;
+    });
     builder.addCase(getOrder.fulfilled, (state, action) => {
       state.isLoading = false;
       state.data = action.payload;
-      console.log(state.data);
+      // console.log(state.data);
+    });
+    builder.addCase(getOrder.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action?.error?.message;
     });
   },
 });

@@ -38,7 +38,7 @@
 }
 
 .steps .number {
-  border: 1px solid black;
+  border: 1px solid #0d28a6;
   border-radius: 50%;
   width: 14px;
   height: 14px;
@@ -50,6 +50,7 @@
 }
 
 .steps hr {
-  border: 1px solid black;
+  border-top: 2px solid #0d28a6;
   width: 28px;
+  opacity: 1;
 }

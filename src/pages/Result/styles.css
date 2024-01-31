@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   gap: 24px;
   margin: 40px 196px 283px;
+  justify-content: center;
 }
 .car-card {
   display: flex;

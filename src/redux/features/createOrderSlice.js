@@ -19,7 +19,7 @@ export const createOrder = createAsyncThunk(
       const data = res.data;
       return data;
     } catch (error) {
-      console.log(error);
+      return error.response.data.message;
     }
   }
 );
@@ -42,7 +42,7 @@ export const createOrderSlice = createSlice({
     builder.addCase(createOrder.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload;
-      // console.log(state.data);
+      console.log(state.data);
     });
   },
 });

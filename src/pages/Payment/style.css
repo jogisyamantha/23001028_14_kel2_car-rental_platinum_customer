@@ -8,7 +8,7 @@
 .payment-flexbox {
   display: flex;
   gap: 32px;
-  margin: 0 199px;
+  margin: 40px 199px;
 }
 
 .countdown-container {
@@ -101,9 +101,10 @@
   font-size: 14px;
   text-align: center;
   text-decoration: none;
+  color: inherit;
 }
 
-.instruction-option a:hover {
+.instruction-option a.active {
   border-bottom: #5cb85f solid 2px;
 }
 

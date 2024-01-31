@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Pagination, ConfigProvider } from "antd";
 import { getCarList } from "../../redux/features/carListSlice";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import SearchBar from "../../components/SearchBar";
 import "./styles.css";
+import { current } from "@reduxjs/toolkit";
 
 const Result = () => {
   const ERROR_SCR =
     "https://placehold.jp/c2c2c2/ffffff/286x160.png?text=%E2%9B%9F&css=%7B%22border-radius%22%3A%22%208px%22%7D";
   const dispatch = useDispatch();
-  const cars = useSelector((state) => state.list.data);
+  const { cars, count } = useSelector((state) => state.list.data);
 
   useEffect(() => {
     dispatch(getCarList());
@@ -20,6 +22,10 @@ const Result = () => {
   const handleNotFound = (event) => {
     event.target.src = ERROR_SCR;
     event.target.onerror = null;
+  };
+
+  const handleChange = (page, pageSize) => {
+    dispatch(getCarList(page));
   };
 
   return (
@@ -48,6 +54,21 @@ const Result = () => {
             </Link>
           </div>
         ))}
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "#5cb85f",
+            },
+          }}
+        >
+          <Pagination
+            defaultCurrent={1}
+            pageSize={6}
+            total={count}
+            onChange={handleChange}
+            style={{ marginTop: "20px" }}
+          />
+        </ConfigProvider>
       </div>
       <Footer />
     </div>

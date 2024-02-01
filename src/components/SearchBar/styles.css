@@ -1,10 +1,31 @@
 .search-bar {
-  width: fit-content;
+  max-width: fit-content;
   border-radius: 8px;
   padding: 24px;
   /* Shadow/High */
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
-  margin: 0 196px;
+  /* margin: 0 196px; */
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+  background-color: white;
+}
+
+.search-bar-find {
+  max-width: fit-content;
+  border-radius: 8px;
+  padding: 24px;
+  /* Shadow/High */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  /* margin: 0 196px; */
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+  background-color: white;
 }
 
 .search-bar p {

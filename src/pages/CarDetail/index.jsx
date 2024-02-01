@@ -66,7 +66,9 @@ const CarDetail = () => {
   return (
     <div>
       {contextHolder}
-      <Navbar />
+      <div className="header-exclude-hero">
+        <Navbar />
+      </div>
       <SearchBar />
       <div className="car-detail">
         <Terms />

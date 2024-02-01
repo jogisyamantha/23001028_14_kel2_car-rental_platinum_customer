@@ -1,52 +1,54 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { postLogin } from "../../redux/features/loginSlice";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { postRegister } from "../../redux/features/registerSlice";
+import { useNavigate, Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { notification, Spin } from "antd";
 
 const Register = () => {
-  // const [loginPayload, setloginPayload] = useState({
-  //   email: "",
-  //   password: "",
-  // });
+  const [registerPayload, setRegisterPayload] = useState({
+    name: "",
+    email: "",
+    password: "",
+    role: "admin",
+  });
 
   const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const loginState = useSelector((state) => state.login);
+  const registerState = useSelector((state) => state.register);
 
   const handleOnChange = (e) => {
-    // const { name, value } = e.target;
-    // setloginPayload({ ...loginPayload, [name]: value });
+    const { name, value } = e.target;
+    setRegisterPayload({ ...registerPayload, [name]: value });
   };
 
-  // const handleLogin = () => {
-  //   if (loginPayload.email === "" || loginPayload.password === "") {
-  //     api["error"]({
-  //       message: "Upps!!",
-  //       description: "Isi semua field, jangan sampai kosong ya!!!",
-  //     });
-  //   } else {
-  //     dispatch(postLogin(loginPayload))
-  //       .unwrap()
-  //       .then((res) => {
-  //         // handle successful login
-  //         const queryParams = new URLSearchParams(location.search);
-  //         const source = queryParams.get("source");
-  //         if (source === null) navigate(`/`);
-  //         else navigate(`/${source}`);
-  //       })
-  //       .catch((error) => {
-  //         // handle error
-  //         api["error"]({
-  //           message: "Upps!!",
-  //           description:
-  //             "Sepertinya ada yang salah dengan email atau password mu, cek kembali ya!!!",
-  //         });
-  //       });
-  //   }
-  // };
+  const handleRegister = () => {
+    if (
+      registerPayload.email === "" ||
+      registerPayload.password === "" ||
+      registerPayload.name === ""
+    ) {
+      api["error"]({
+        message: "Upps!!",
+        description: "Isi semua field, jangan sampai kosong ya!!!",
+      });
+    } else {
+      dispatch(postRegister(registerPayload))
+        .unwrap()
+        .then((res) => {
+          // handle successful login
+          navigate(`/login`);
+        })
+        .catch((error) => {
+          // handle error
+          api["error"]({
+            message: "Register Failed",
+            description: error,
+          });
+        });
+    }
+  };
 
   return (
     <div className="login-container">
@@ -90,14 +92,13 @@ const Register = () => {
             </div>
           </div>
           <div>
-            {/* {loginState.loading ? (
+            {registerState.loading ? (
               <div className="login-loader">
                 <Spin />
               </div>
             ) : (
-              <button onClick={handleLogin}>Sign In</button>
-            )} */}
-            <button>Sign Up</button>
+              <button onClick={handleRegister}>Sign In</button>
+            )}
           </div>
           <div className="login-register-container">
             <div>Already have an account? </div>

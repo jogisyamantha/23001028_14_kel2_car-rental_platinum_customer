@@ -19,8 +19,8 @@ export const postLogin = createAsyncThunk(
 
 const initialState = {
   email: "",
-  loading: null,
-  success: null,
+  loading: false,
+  success: false,
   error: "",
 };
 

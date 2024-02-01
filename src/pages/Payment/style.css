@@ -11,6 +11,15 @@
   margin: 40px 199px;
 }
 
+.header-payment {
+  background-color: #f1f3ff;
+  height: 164px;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  padding: 24px 0;
+}
+
 .countdown-container {
   display: flex;
   flex-direction: row;

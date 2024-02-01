@@ -23,6 +23,10 @@ const Result = () => {
   //   );
   // }, []);
 
+  const formatedPrice = (item) => {
+    return new Intl.NumberFormat("id-ID").format(item);
+  };
+
   const handleNotFound = (event) => {
     event.target.src = ERROR_SCR;
     event.target.onerror = null;
@@ -58,7 +62,7 @@ const Result = () => {
               <img src={ERROR_SCR} />
             )}
             <p>{item.name}</p>
-            <h2>Rp. {item.price}/ hari</h2>
+            <h2>Rp. {formatedPrice(item.price)}/ hari</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.

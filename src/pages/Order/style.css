@@ -1,3 +1,9 @@
+.progress-order-container {
+  position: absolute;
+  top: 125px;
+  width: -webkit-fill-available;
+}
+
 .order-detail {
   border-radius: 8px;
   background: #fff;
@@ -31,7 +37,7 @@
 .order-flexbox {
   display: flex;
   gap: 32px;
-  margin: 0 199px;
+  margin: 60px 199px;
 }
 
 .bank-card {

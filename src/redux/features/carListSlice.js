@@ -3,16 +3,14 @@ import axios from "axios";
 
 export const getCarList = createAsyncThunk(
   "list/getCarList",
-  async (page = 1) => {
+  async (url, { rejectWithValue }) => {
     try {
-      const res = await axios.get(
-        `https://api-car-rental.binaracademy.org/customer/v2/car?page=${page}&pageSize=6`
-      );
+      const res = await axios.get(url);
       const data = res.data;
       // console.log(data);
       return data;
     } catch (error) {
-      return error.response.data;
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -24,6 +22,7 @@ const initialState = {
     count: 0,
   },
   error: null,
+  page: 1,
 };
 
 export const carListSlice = createSlice({
@@ -43,7 +42,7 @@ export const carListSlice = createSlice({
       })
       .addCase(getCarList.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action?.error?.message;
+        state.error = action.payload;
       });
   },
 });

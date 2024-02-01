@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Pagination, ConfigProvider } from "antd";
 import { getCarList } from "../../redux/features/carListSlice";
 import Navbar from "../../components/Navbar";
+import Hero from "../../components/Hero";
 import Footer from "../../components/Footer";
 import SearchBar from "../../components/SearchBar";
 import "./styles.css";
@@ -15,9 +16,12 @@ const Result = () => {
   const dispatch = useDispatch();
   const { cars, count } = useSelector((state) => state.list.data);
 
-  useEffect(() => {
-    dispatch(getCarList());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(
+  //     getCarList()
+  // `https://api-car-rental.binaracademy.org/customer/v2/car?page={page}&pageSize=6`
+  //   );
+  // }, []);
 
   const handleNotFound = (event) => {
     event.target.src = ERROR_SCR;
@@ -25,13 +29,23 @@ const Result = () => {
   };
 
   const handleChange = (page, pageSize) => {
-    dispatch(getCarList(page));
+    // dispatch(getCarList(page));
   };
 
   return (
     <div>
-      {/* Navbar */}
-      <Navbar />
+      {count <= 0 ? (
+        <div className="header">
+          <Navbar />
+          <Hero isShowButton={false} />
+        </div>
+      ) : (
+        <div>
+          <div className="header-exclude-hero">
+            <Navbar />
+          </div>
+        </div>
+      )}
       {/* Search bar */}
       <SearchBar />
       {/* Search result */}

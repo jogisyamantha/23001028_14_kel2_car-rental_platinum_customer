@@ -1,28 +1,40 @@
-import { FaArrowLeft } from "react-icons/fa6";
-import PaymentFlow from "../../assets/assets-ticketPage/PaymentFlow.png";
 import Success from "../../assets/assets-ticketPage/success.png";
 import Download from "../../assets/assets-ticketPage/download.png";
-import Image from "../../assets/assets-ticketPage/image.png";
+import Progress from "../../components/Progress";
 
+import { useState, useEffect } from "react";
+import Navbar from "../../components/Navbar";
 const Ticket = () => {
+  const [file, setFile] = useState(null);
+  const [timestamp, setTimestamp] = useState(Date.now());
+
+  useEffect(() => {
+    setFile(localStorage.getItem("slip"));
+  }, []);
+
+  useEffect(() => {
+    setTimestamp(Date.now());
+  }, [file]);
+
+  // Fungsi untuk menangani unduhan gambar
+  const handleDownload = () => {
+    if (file) {
+      const fileName = "slip_pembayaran.png"; // Atur nama file yang diunduh di sini
+      const aTag = document.createElement("a");
+      aTag.href = file;
+      aTag.setAttribute("download", fileName);
+      document.body.appendChild(aTag);
+      aTag.click();
+      document.body.removeChild(aTag);
+    } else {
+      console.error("File tidak tersedia untuk diunduh.");
+    }
+  };
+
   return (
     <>
-      <div style={{ background: "#f1f3ff" }}>
-        <div className="d-flex pt-4 m-auto" style={{ width: "62%" }}>
-          <div className="container d-flex gap-3">
-            <FaArrowLeft className="mt-2" />
-            <div>
-              <h3>
-                <b>Tiket</b>
-              </h3>
-              <p>Order ID: xxxxxxxx</p>
-            </div>
-          </div>
-          <div>
-            <img src={PaymentFlow} alt="Payment-Flow" style={{ width: 300 }} />
-          </div>
-        </div>
-      </div>
+      <Navbar />
+      <Progress progress={3} />
       <div className="mt-5">
         <div className="d-flex flex-column justify-content-center align-items-center gap-3 fw-light" style={{ width: "100%" }}>
           <img src={Success} alt="" />
@@ -42,7 +54,7 @@ const Ticket = () => {
                 <p>*no invoice</p>
               </div>
               <div>
-                <button className="btn d-flex gap-2 border-primary rounded-1" style={{ color: "#0D28A6" }}>
+                <button className="btn d-flex gap-2 border-primary rounded-1" style={{ color: "#0D28A6" }} onClick={handleDownload}>
                   <img src={Download} alt="download" style={{ width: 20 }} className="m-auto" />
                   <h5 className="fs-6 m-auto">
                     <b>Unduh</b>
@@ -51,11 +63,8 @@ const Ticket = () => {
               </div>
             </div>
             <div className="m-auto rounded-1" style={{ background: "#EEE", width: "100%", height: 200, border: "1px dashed var(--neutral-02, #D0D0D0)" }}>
-              <div className="d-flex justify-content-center gap-3 align-items-center" style={{ height: "100%" }}>
-                <img src={Image} alt="" className="d-flex align-items-center" style={{ width: 25, height: 30 }} />
-                PDF Viewer
-                <img />
-              </div>
+              <img key={timestamp} src={file} style={{ width: "100%", height: "13rem" }} alt="" />
+              <img />
             </div>
           </div>
         </div>

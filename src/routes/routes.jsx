@@ -9,6 +9,7 @@ import Result from "../pages/Result";
 import CarDetail from "../pages/CarDetail";
 import Order from "../pages/Order";
 import Payment from "../pages/Payment";
+import Ticket from "../pages/Ticket";
 
 export const routes = createBrowserRouter([
   {
@@ -52,6 +53,14 @@ export const routes = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Order />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/order/:id/payment/invoice",
+    element: (
+      <ProtectedRoute>
+        <Ticket />
       </ProtectedRoute>
     ),
   },

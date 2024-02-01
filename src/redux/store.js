@@ -6,10 +6,12 @@ import slipUploadReducer from "./features/slipUploadSlice";
 import carListReducer from "./features/carListSlice";
 import carDetailReducer from "./features/carDetailSlice";
 import bankReducer from "./features/bankSlice";
+import registerSlice from "./features/registerSlice";
 
 export const store = configureStore({
   reducer: {
     login: loginReducer,
+    register: registerSlice,
     bank: bankReducer,
     createOrder: createOrderReducer,
     getOrder: getOrderReducer,

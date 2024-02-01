@@ -9,6 +9,7 @@ import Result from "../pages/Result";
 import CarDetail from "../pages/CarDetail";
 import Order from "../pages/Order";
 import Payment from "../pages/Payment";
+import PageNotFound from "../pages/PageNotFound";
 
 export const routes = createBrowserRouter([
   {
@@ -54,5 +55,9 @@ export const routes = createBrowserRouter([
         <Order />
       </ProtectedRoute>
     ),
+  },
+  {
+    path: "*",
+    element: <PageNotFound />,
   },
 ]);

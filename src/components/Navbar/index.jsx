@@ -1,6 +1,6 @@
 import logo from "../../assets/logo.png";
 import "./styles.css";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const token = localStorage.getItem("access_token");
@@ -19,10 +19,10 @@ const Navbar = () => {
     <div className="navbar-container">
       <img src={logo} alt="dummy-logo" />
       <div>
-        <a>Our Services</a>
-        <a>Why Us</a>
-        <a>Testimonial</a>
-        <a>FAQ</a>
+        <a href="#our-service">Our Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#testimonial">Testimonial</a>
+        <a href="#faq">FAQ</a>
         {token ? (
           <button onClick={handleLogout}>Logout</button>
         ) : (

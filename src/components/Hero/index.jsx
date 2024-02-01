@@ -1,8 +1,14 @@
 import "./style.css";
 import car from "../../assets/assets-homepage/img_car.png";
-// import Button from "../Button";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleCarList = () => {
+    navigate("/car-list");
+  };
+
   return (
     <div className="header-banner-container">
       <div className="header-banner-container-left">
@@ -15,9 +21,8 @@ const Hero = () => {
           untuk sewa mobil selama 24 jam.
         </p>
         <div>
-          <button>Mulai Sewa Mobil</button>
+          <button onClick={handleCarList}>Mulai Sewa Mobil</button>
         </div>
-        {/* <Button name={"Mulai Sewa Mobil"} to={"/search-car"}></Button> */}
       </div>
       <img src={car} alt="" />
     </div>

@@ -14,25 +14,28 @@ const SearchBar = () => {
   const dispatch = useDispatch();
 
   const handleFindCars = () => {
-    console.log("find car");
     const url = `https://api-car-rental.binaracademy.org/customer/v2/car?name=${carName}&category=${carCategory}&isRented=${carIsRented}&${carPrice}&page=${carListState.page}&pageSize=6`;
     dispatch(getCarList(url));
   };
 
   const getCarNameInput = (e) => {
     setCarName(e.target.value);
+    dispatch(setCarName(e.target.value));
   };
 
   const getCarCategoryInput = (e) => {
     setCarCategory(e.target.value);
+    dispatch(setCarCategory(e.target.value));
   };
 
   const getCarPriceInput = (e) => {
     setCarPrice(e.target.value);
+    dispatch(setCarPrice(e.target.value));
   };
 
   const getCarStatusInput = (e) => {
     setCarIsRented(e.target.value);
+    dispatch(setCarIsRented(e.target.value));
   };
 
   return (

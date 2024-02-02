@@ -23,12 +23,31 @@ const initialState = {
   },
   error: null,
   page: 1,
+  currentFilter: {
+    carName: "",
+    carCategory: "",
+    carPrice: "",
+    carStatus: "",
+  },
 };
 
 export const carListSlice = createSlice({
   name: "list",
   initialState,
-  reducers: {},
+  reducers: {
+    setCarname: (state, action) => {
+      state.currentFilter.carName = action.payload;
+    },
+    setCarCategory: (state, action) => {
+      state.currentFilter.carCategory = action.payload;
+    },
+    setCarPrice: (state, action) => {
+      state.currentFilter.carPrice = action.payload;
+    },
+    setCarStatus: (state, action) => {
+      state.currentFilter.carStatus = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCarList.pending, (state) => {
@@ -47,4 +66,6 @@ export const carListSlice = createSlice({
   },
 });
 
+export const { setCarname, setCarCategory, setCarPrice, setCarStatus } =
+  carListSlice.actions;
 export default carListSlice.reducer;

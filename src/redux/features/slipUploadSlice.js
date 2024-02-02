@@ -16,7 +16,6 @@ export const slipUpload = createAsyncThunk(
             const res = await axios.put(api, formData, config);
             const data = res.data;
             console.log(data);
-            localStorage.setItem("slip", data.slip)
             return data;
         } catch (error) {
             console.log(error);

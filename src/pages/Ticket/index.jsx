@@ -1,35 +1,16 @@
 import Success from "../../assets/assets-ticketPage/success.png";
 import Download from "../../assets/assets-ticketPage/download.png";
 import Progress from "../../components/Progress";
-
-import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
+import pdfDummy from "./success-payment.pdf";
+import { Worker } from "@react-pdf-viewer/core";
+import { Viewer } from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import { getFilePlugin } from "@react-pdf-viewer/get-file";
+
+const WORKER_URL = `https://unpkg.com/pdfjs-dist@2.1.266/build/pdf.worker.min.js`;
 const Ticket = () => {
-  const [file, setFile] = useState(null);
-  const [timestamp, setTimestamp] = useState(Date.now());
-
-  useEffect(() => {
-    setFile(localStorage.getItem("slip"));
-  }, []);
-
-  useEffect(() => {
-    setTimestamp(Date.now());
-  }, [file]);
-
-  // Fungsi untuk menangani unduhan gambar
-  const handleDownload = () => {
-    if (file) {
-      const fileName = "slip_pembayaran.png"; // Atur nama file yang diunduh di sini
-      const aTag = document.createElement("a");
-      aTag.href = file;
-      aTag.setAttribute("download", fileName);
-      document.body.appendChild(aTag);
-      aTag.click();
-      document.body.removeChild(aTag);
-    } else {
-      console.error("File tidak tersedia untuk diunduh.");
-    }
-  };
+  const getFilePluginInstance = getFilePlugin();
 
   return (
     <>
@@ -54,17 +35,18 @@ const Ticket = () => {
                 <p>*no invoice</p>
               </div>
               <div>
-                <button className="btn d-flex gap-2 border-primary rounded-1" style={{ color: "#0D28A6" }} onClick={handleDownload}>
+                <a className="btn d-flex gap-2 border-primary rounded-1" href={pdfDummy} style={{ color: "#0D28A6" }}>
                   <img src={Download} alt="download" style={{ width: 20 }} className="m-auto" />
                   <h5 className="fs-6 m-auto">
                     <b>Unduh</b>
                   </h5>
-                </button>
+                </a>
               </div>
             </div>
-            <div className="m-auto rounded-1" style={{ background: "#EEE", width: "100%", height: 200, border: "1px dashed var(--neutral-02, #D0D0D0)" }}>
-              <img key={timestamp} src={file} style={{ width: "100%", height: "13rem" }} alt="" />
-              <img />
+            <div className="m-auto rounded-1" style={{ background: "#EEE", width: "100%", height: 400, border: "1px dashed var(--neutral-02, #D0D0D0)" }}>
+              <Worker workerUrl={WORKER_URL}>
+                <Viewer plugins={[getFilePluginInstance]} fileUrl={pdfDummy} />
+              </Worker>
             </div>
           </div>
         </div>

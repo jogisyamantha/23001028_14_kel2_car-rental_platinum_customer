@@ -15,11 +15,7 @@ const Progress = ({ orderId, progress }) => {
   return (
     <div className="progress-container">
       <div className="back-navigation">
-        <IoMdArrowBack
-          style={{ cursor: "pointer" }}
-          onClick={handleBack}
-          size={24}
-        />
+        <IoMdArrowBack style={{ cursor: "pointer" }} onClick={handleBack} size={24} />
         <div>
           <h3>Pembayaran</h3>
           {orderId ? <p>ORDER ID: {orderId}</p> : null}
@@ -27,22 +23,14 @@ const Progress = ({ orderId, progress }) => {
       </div>
       <div className="steps">
         <div>
-          <div
-            style={
-              progress == 1 || progress == 2 || progress == 3 ? style : null
-            }
-            className="number"
-          >
+          <div style={progress == 1 || progress == 2 || progress == 3 ? style : null} className="number">
             <p>1</p>
           </div>
           <p>Pilih Metode</p>
         </div>
         <hr />
         <div>
-          <div
-            style={progress == 2 || progress == 3 ? style : null}
-            className="number"
-          >
+          <div style={progress == 2 || progress == 3 ? style : null} className="number">
             <p>2</p>
           </div>
           <p>Bayar</p>

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Progress from "../../components/Progress";
@@ -11,7 +11,7 @@ import { slipUpload } from "../../redux/features/slipUploadSlice";
 import "./style.css";
 import dayjs from "dayjs";
 
-const Payment = (order) => {
+const Payment = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [file, setFile] = useState(null);
   const [prevFile, setPrevFile] = useState(null);
@@ -20,6 +20,8 @@ const Payment = (order) => {
   const { Countdown } = Statistic;
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const slipUploadSlice = useSelector((state) => state.slip);
 
   const deadline = dayjs().add(1, "day");
   const deadlineHour = dayjs().add(1, "day").format("HH:mm");
@@ -39,11 +41,13 @@ const Payment = (order) => {
         description: "Silahkan upload slip pembayaran",
       });
     }
-    localStorage.removeItem("slip");
-    localStorage.removeItem("reloaded");
+    // localStorage.removeItem("slip");
+    // localStorage.removeItem("reloaded");
     const formData = new FormData();
     formData.append("slip", file);
-    dispatch(slipUpload({ id, formData }));
+    dispatch(slipUpload({ id, formData })).then(() => {
+      navigate(`/order/${slipUploadSlice.id}/payment/invoice`);
+    });
   };
 
   return (
@@ -107,9 +111,7 @@ const Payment = (order) => {
                   </label>
                 )}
               </div>
-              <Link to={`/order/${order.id}/payment/invoice`}>
-                <button onClick={handleUpload}>Upload</button>
-              </Link>
+              <button onClick={handleUpload}>Upload</button>
             </div>
           </div>
         )}

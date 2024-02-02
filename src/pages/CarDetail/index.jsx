@@ -9,7 +9,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { carById } from "../../redux/features/carDetailSlice";
 import { createOrder } from "../../redux/features/createOrderSlice";
-import { DatePicker, notification, ConfigProvider } from "antd";
+import { DatePicker, notification, ConfigProvider, Spin } from "antd";
 import dayjs from "dayjs";
 
 const CarDetail = () => {
@@ -21,6 +21,7 @@ const CarDetail = () => {
   const { RangePicker } = DatePicker;
   const [api, contextHolder] = notification.useNotification();
   const { car } = useSelector((state) => state.detail);
+  const { isLoading } = useSelector((state) => state.createOrder);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
@@ -40,6 +41,10 @@ const CarDetail = () => {
 
   const disabledDate = (current) => {
     return current && current < dayjs().endOf("day");
+  };
+
+  const formatedPrice = (item) => {
+    return new Intl.NumberFormat("id-ID").format(item);
   };
 
   const handleSubmit = () => {
@@ -66,7 +71,9 @@ const CarDetail = () => {
   return (
     <div>
       {contextHolder}
-      <Navbar />
+      <div className="header-exclude-hero">
+        <Navbar />
+      </div>
       <SearchBar />
       <div className="car-detail">
         <Terms />
@@ -102,9 +109,13 @@ const CarDetail = () => {
           </div>
           <div className="price-container">
             <p>Total:</p>
-            <p>Rp. {car.price}</p>
+            <p>Rp. {formatedPrice(car.price)}</p>
           </div>
-          <button onClick={handleSubmit}>Lanjutkan Pembayaran</button>
+          {isLoading ? (
+            <Spin />
+          ) : (
+            <button onClick={handleSubmit}>Lanjutkan Pembayaran</button>
+          )}
         </div>
       </div>
       <Footer />

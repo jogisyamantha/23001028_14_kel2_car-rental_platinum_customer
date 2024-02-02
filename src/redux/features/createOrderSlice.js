@@ -25,7 +25,7 @@ export const createOrder = createAsyncThunk(
 );
 
 const initialState = {
-  loading: false,
+  isLoading: false,
   data: {
     id: null,
     start_rent_at: "",
@@ -39,10 +39,13 @@ export const createOrderSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(createOrder.pending, (state) => {
+      state.isLoading = true;
+    });
     builder.addCase(createOrder.fulfilled, (state, action) => {
-      state.loading = false;
+      state.isLoading = false;
       state.data = action.payload;
-      console.log(state.data);
+      // console.log(state.data);
     });
   },
 });

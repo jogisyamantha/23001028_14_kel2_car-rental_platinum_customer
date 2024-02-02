@@ -28,7 +28,7 @@ const initialState = {
     total_price: null,
     slip: "",
     isLoading: false,
-}
+};
 
 export const slipUploadSlice = createSlice({
     name: "slip",
@@ -42,7 +42,9 @@ export const slipUploadSlice = createSlice({
             .addCase(slipUpload.fulfilled, (state, action) => {
                 state.isLoading = false;
                 // state.data = action.payload;
-                state.slip = action.payload;
+                state.slip = action.payload.slip;
+                state.id = action.payload.id;
+                state.total_price = action.payload.total_price;
             })
             .addCase(slipUpload.rejected, (state) => {
                 state.isLoading = false;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postLogin } from "../../redux/features/loginSlice";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 import Logo from "../../assets/logo.png";
 import { notification, Spin } from "antd";

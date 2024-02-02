@@ -16,22 +16,23 @@ const Order = () => {
   const dispatch = useDispatch();
   const param = useParams();
 
-  const handleCheck = () => {
-    setIsChecked(!isChecked);
-  };
-
   useEffect(() => {
     dispatch(getOrder(param.id));
   }, []);
 
-  // console.log(data.id);
-  // console.log(order);
+  const handleCheck = () => {
+    setIsChecked(!isChecked);
+  };
 
   return (
     <div>
-      <Navbar />
-      <Progress progress={1} />
-      <OrderDetail order={order} />
+      <div className="header-exclude-hero">
+        <Navbar />
+        <div className="progress-order-container">
+          <Progress progress={1} />
+          <OrderDetail order={order} />
+        </div>
+      </div>
       <div className="order-flexbox">
         <BankList handleCheck={handleCheck} />
         <PriceList isChecked={isChecked} order={order} />

@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Progress from "../../components/Progress";
 import BankTransfer from "./BankTransfer";
 import { CiImageOn } from "react-icons/ci";
-import { Statistic, notification } from "antd";
+import { Statistic, notification, Spin } from "antd";
 import { slipUpload } from "../../redux/features/slipUploadSlice";
 import "./style.css";
 import dayjs from "dayjs";
+import "dayjs/locale/id";
 
 const Payment = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -18,10 +21,10 @@ const Payment = () => {
   const [isDisplay, setIsDisplay] = useState(false);
   const [api, contextHolder] = notification.useNotification();
   const { Countdown } = Statistic;
+  const { isLoading } = useSelector((state) => state.slip);
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const slipUploadSlice = useSelector((state) => state.slip);
 
   const deadline = dayjs().add(1, "day");
   const deadlineHour = dayjs().add(1, "day").format("HH:mm");
@@ -40,28 +43,33 @@ const Payment = () => {
         message: "Error!!",
         description: "Silahkan upload slip pembayaran",
       });
+      return;
     }
     // localStorage.removeItem("slip");
     // localStorage.removeItem("reloaded");
     const formData = new FormData();
     formData.append("slip", file);
-    dispatch(slipUpload({ id, formData })).then(() => {
-      navigate(`/order/${slipUploadSlice.id}/payment/invoice`);
+    dispatch(slipUpload({ id, formData })).then((res) => {
+      const id = res.payload.id;
+      navigate(`/order/${id}/payment/invoice`);
+      // console.log(id);
     });
   };
 
   return (
     <>
       {contextHolder}
-      <Navbar />
-      <Progress orderId={id} progress={2} />
+      <div className="header-payment">
+        <Navbar />
+        <Progress orderId={id} progress={2} />
+      </div>
       <div className="payment-flexbox">
         <div>
           <div className="countdown-container card">
             <div>
               <h3>Selesaikan Pembayaran Sebelum</h3>
               <p>
-                {deadline.format("dddd, DD MMM YYYY")} jam {deadlineHour} WIB
+                {deadline.locale("id").format("dddd, DD MMM YYYY")} jam {deadlineHour} WIB
               </p>
             </div>
             <Countdown
@@ -103,7 +111,7 @@ const Payment = () => {
                 <p>Untuk membantu kami lebih cepat melakukan pengecekan. Kamu bisa upload bukti bayarmu</p>
               </div>
               <div className="preview-slip">
-                {isDisplay && <img src={prevFile} alt="preview" style={{ width: "100%" }} />}
+                {isDisplay && <img src={prevFile} alt="preview" style={{ maxWidth: "100%", maxHeight: "100%" }} />}
                 {!isDisplay && (
                   <label id="label" htmlFor="image-upload">
                     <CiImageOn style={{ width: 24, height: 24 }} />
@@ -111,7 +119,7 @@ const Payment = () => {
                   </label>
                 )}
               </div>
-              <button onClick={handleUpload}>Upload</button>
+              {isLoading ? <Spin /> : <button onClick={handleUpload}>Upload</button>}
             </div>
           </div>
         )}

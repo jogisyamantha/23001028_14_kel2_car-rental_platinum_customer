@@ -14,8 +14,10 @@ const Ticket = () => {
 
   return (
     <>
-      <Navbar />
-      <Progress progress={3} />
+      <div className="header-payment">
+        <Navbar />
+        <Progress progress={3} />
+      </div>
       <div className="mt-5">
         <div className="d-flex flex-column justify-content-center align-items-center gap-3 fw-light" style={{ width: "100%" }}>
           <img src={Success} alt="" />

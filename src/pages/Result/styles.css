@@ -1,11 +1,11 @@
-.car-list-container {
+/* .car-list-container {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  /* margin: 40px 196px 283px; */
   margin: 150px 196px 283px;
   justify-content: center;
-}
+} */
+
 .car-card {
   display: flex;
   flex-direction: column;
@@ -47,4 +47,18 @@
   color: #fff;
   font-weight: 700;
   width: -webkit-fill-available;
+}
+
+.card-list-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 0 auto;
+  max-width: 1047px;
+  padding-top: 150px;
+  padding-bottom: 50px;
+  gap: 24px;
+}
+
+.pagination-container {
+  margin: 0 auto;
 }

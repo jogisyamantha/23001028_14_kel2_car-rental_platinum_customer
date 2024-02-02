@@ -16,3 +16,9 @@
   background: #f1f3ff;
   width: 100%;
 }
+
+@media screen and (max-width: 600px) {
+  .landing-page-container {
+    padding: 0 16px 60px 16px;
+  }
+}

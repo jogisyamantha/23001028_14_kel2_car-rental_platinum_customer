@@ -49,7 +49,7 @@ const Result = () => {
       {/* Search bar */}
       <SearchBar />
       {/* Search result */}
-      <div className="car-list-container">
+      <div className="card-list-container">
         {cars.map((item) => (
           <div key={item.id} className="car-card">
             {item.image ? (
@@ -68,6 +68,8 @@ const Result = () => {
             </Link>
           </div>
         ))}
+      </div>
+      <div className="pagination-container">
         <ConfigProvider
           theme={{
             token: {

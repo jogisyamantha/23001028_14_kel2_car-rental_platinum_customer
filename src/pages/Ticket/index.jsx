@@ -8,16 +8,14 @@ import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { getFilePlugin } from "@react-pdf-viewer/get-file";
 
-const WORKER_URL = `https://unpkg.com/pdfjs-dist@2.1.266/build/pdf.worker.min.js`;
 const Ticket = () => {
-  const getFilePluginInstance = getFilePlugin();
+  const workerUrl = `https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js`;
+  const getFile = getFilePlugin();
 
   return (
     <>
-      <div className="header-payment">
-        <Navbar />
-        <Progress progress={3} />
-      </div>
+      <Navbar />
+      <Progress progress={3} />
       <div className="mt-5">
         <div className="d-flex flex-column justify-content-center align-items-center gap-3 fw-light" style={{ width: "100%" }}>
           <img src={Success} alt="" />
@@ -46,8 +44,8 @@ const Ticket = () => {
               </div>
             </div>
             <div className="m-auto rounded-1" style={{ background: "#EEE", width: "100%", height: 400, border: "1px dashed var(--neutral-02, #D0D0D0)" }}>
-              <Worker workerUrl={WORKER_URL}>
-                <Viewer plugins={[getFilePluginInstance]} fileUrl={pdfDummy} />
+              <Worker workerUrl={workerUrl}>
+                <Viewer plugins={[getFile]} fileUrl={pdfDummy} />
               </Worker>
             </div>
           </div>

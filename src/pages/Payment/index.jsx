@@ -11,6 +11,7 @@ import { slipUpload } from "../../redux/features/slipUploadSlice";
 import "./style.css";
 import dayjs from "dayjs";
 import "dayjs/locale/id";
+import { Helmet } from "react-helmet";
 
 const Payment = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -56,6 +57,13 @@ const Payment = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Binar Car Rental | Payment </title>
+        <meta
+          name="description"
+          content="Binar Car Rental, Selesaikan pembayaran"
+        />
+      </Helmet>
       {contextHolder}
       <div className="header-payment">
         <Navbar />
@@ -67,7 +75,8 @@ const Payment = () => {
             <div>
               <h3>Selesaikan Pembayaran Sebelum</h3>
               <p>
-                {deadline.locale("id").format("dddd, DD MMM YYYY")} jam {deadlineHour} WIB
+                {deadline.locale("id").format("dddd, DD MMM YYYY")} jam{" "}
+                {deadlineHour} WIB
               </p>
             </div>
             <Countdown
@@ -83,8 +92,12 @@ const Payment = () => {
         </div>
         {!isConfirmed && (
           <div className="confirmation card">
-            <p>Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</p>
-            <button onClick={() => setIsConfirmed(true)}>Konfirmasi Pembayaran</button>
+            <p>
+              Klik konfirmasi pembayaran untuk mempercepat proses pengecekan
+            </p>
+            <button onClick={() => setIsConfirmed(true)}>
+              Konfirmasi Pembayaran
+            </button>
           </div>
         )}
         {isConfirmed && (
@@ -103,21 +116,43 @@ const Payment = () => {
                   }}
                 />
               </div>
-              <p>Terima kasih telah melakukan konfirmasi pembayaran. Pembayaranmu akan segera kami cek tunggu kurang lebih 10 menit untuk mendapatkan konfirmasi.</p>
+              <p>
+                Terima kasih telah melakukan konfirmasi pembayaran. Pembayaranmu
+                akan segera kami cek tunggu kurang lebih 10 menit untuk
+                mendapatkan konfirmasi.
+              </p>
               <div>
                 <p id="title-upload">Upload Bukti Pembayaran</p>
-                <p>Untuk membantu kami lebih cepat melakukan pengecekan. Kamu bisa upload bukti bayarmu</p>
+                <p>
+                  Untuk membantu kami lebih cepat melakukan pengecekan. Kamu
+                  bisa upload bukti bayarmu
+                </p>
               </div>
               <div className="preview-slip">
-                {isDisplay && <img src={prevFile} alt="preview" style={{ maxWidth: "100%", maxHeight: "100%" }} />}
+                {isDisplay && (
+                  <img
+                    src={prevFile}
+                    alt="preview"
+                    style={{ maxWidth: "100%", maxHeight: "100%" }}
+                  />
+                )}
                 {!isDisplay && (
                   <label id="label" htmlFor="image-upload">
                     <CiImageOn style={{ width: 24, height: 24 }} />
-                    <input id="image-upload" type="file" onChange={handleFile} style={{ display: "none" }} />
+                    <input
+                      id="image-upload"
+                      type="file"
+                      onChange={handleFile}
+                      style={{ display: "none" }}
+                    />
                   </label>
                 )}
               </div>
-              {isLoading ? <Spin /> : <button onClick={handleUpload}>Upload</button>}
+              {isLoading ? (
+                <Spin />
+              ) : (
+                <button onClick={handleUpload}>Upload</button>
+              )}
             </div>
           </div>
         )}

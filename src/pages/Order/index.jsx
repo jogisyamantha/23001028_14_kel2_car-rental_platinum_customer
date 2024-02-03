@@ -9,6 +9,7 @@ import { getOrder } from "../../redux/features/getOrderSlice";
 import { useParams } from "react-router-dom";
 import "./style.css";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 const Order = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -26,6 +27,13 @@ const Order = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Binar Car Rental | Order </title>
+        <meta
+          name="description"
+          content="Binar Car Rental, Rincian pesananmu"
+        />
+      </Helmet>
       <div className="header-exclude-hero">
         <Navbar />
         <div className="progress-order-container">

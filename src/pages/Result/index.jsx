@@ -9,6 +9,7 @@ import Footer from "../../components/Footer";
 import SearchBar from "../../components/SearchBar";
 import "./styles.css";
 import { current } from "@reduxjs/toolkit";
+import { Helmet } from "react-helmet";
 
 const Result = () => {
   const ERROR_SCR =
@@ -41,6 +42,13 @@ const Result = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Binar Car Rental | Daftar Mobil </title>
+        <meta
+          name="description"
+          content="Binar Car Rental, Temukan mobil yang sesuai dengan kebutuhanmu"
+        />
+      </Helmet>
       {carsState.data.count <= 0 ? (
         <div className="header">
           <Navbar />

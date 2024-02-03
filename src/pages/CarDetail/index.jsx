@@ -11,6 +11,7 @@ import { carById } from "../../redux/features/carDetailSlice";
 import { createOrder } from "../../redux/features/createOrderSlice";
 import { DatePicker, notification, ConfigProvider, Spin } from "antd";
 import dayjs from "dayjs";
+import { Helmet } from "react-helmet";
 
 const CarDetail = () => {
   const ERROR_SCR =
@@ -70,6 +71,13 @@ const CarDetail = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>{`Binar Car Rental | ${car.name}`}</title>
+        <meta
+          name="description"
+          content={`Binar Car Rental, Sewa ${car.name} sekarang`}
+        />
+      </Helmet>
       {contextHolder}
       <div className="header-exclude-hero">
         <Navbar />

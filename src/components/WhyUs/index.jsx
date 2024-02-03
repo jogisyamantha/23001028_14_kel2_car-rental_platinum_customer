@@ -32,7 +32,12 @@ const WhyUs = () => {
       <p>Mengapa harus pilih Binar Car Rental?</p>
       <div className="whyus-card-container">
         {whyUsData.map((item, index) => (
-          <WhyUsCard key={index} data={item} />
+          // <WhyUsCard key={index} data={item} />
+          <div className="whyus-card">
+            <img src={item.icon} alt={item.title} />
+            <div className="whyus-card-title">{item.title}</div>
+            <p>{item.desc}</p>
+          </div>
         ))}
       </div>
     </div>

@@ -14,7 +14,7 @@ const Result = () => {
   const ERROR_SCR =
     "https://placehold.jp/c2c2c2/ffffff/286x160.png?text=%E2%9B%9F&css=%7B%22border-radius%22%3A%22%208px%22%7D";
   const dispatch = useDispatch();
-  const { cars, count } = useSelector((state) => state.list.data);
+  const carsState = useSelector((state) => state.list);
 
   // useEffect(() => {
   //   dispatch(
@@ -33,12 +33,15 @@ const Result = () => {
   };
 
   const handleChange = (page, pageSize) => {
-    // dispatch(getCarList(page));
+    console.log(carsState.currentFilter);
+    console.log(carsState.currentFilter.carName);
+    const url = `https://api-car-rental.binaracademy.org/customer/v2/car?name=${carsState.currentFilter.carName}&category=${carsState.currentFilter.carCategory}&isRented=${carsState.currentFilter.carIsRented}&${carsState.currentFilter.carPrice}&page=${page}&pageSize=6`;
+    dispatch(getCarList(url));
   };
 
   return (
     <div>
-      {count <= 0 ? (
+      {carsState.data.count <= 0 ? (
         <div className="header">
           <Navbar />
           <Hero isShowButton={false} />
@@ -53,8 +56,8 @@ const Result = () => {
       {/* Search bar */}
       <SearchBar />
       {/* Search result */}
-      <div className="car-list-container">
-        {cars.map((item) => (
+      <div className="card-list-container">
+        {carsState.data.cars.map((item) => (
           <div key={item.id} className="car-card">
             {item.image ? (
               <img src={item.image} onError={handleNotFound} />
@@ -72,6 +75,8 @@ const Result = () => {
             </Link>
           </div>
         ))}
+      </div>
+      <div className="pagination-container">
         <ConfigProvider
           theme={{
             token: {
@@ -79,13 +84,15 @@ const Result = () => {
             },
           }}
         >
-          <Pagination
-            defaultCurrent={1}
-            pageSize={6}
-            total={count}
-            onChange={handleChange}
-            style={{ marginTop: "20px" }}
-          />
+          {carsState.data.count > 0 && (
+            <Pagination
+              defaultCurrent={1}
+              pageSize={6}
+              total={carsState.data.count}
+              onChange={handleChange}
+              style={{ marginTop: "20px" }}
+            />
+          )}
         </ConfigProvider>
       </div>
       <Footer />

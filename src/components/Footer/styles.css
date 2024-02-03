@@ -33,3 +33,11 @@
 .social-media img {
   width: 32px;
 }
+
+@media screen and (max-width: 600px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

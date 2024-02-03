@@ -19,10 +19,11 @@ const initialState = {
   isLoading: false,
   data: {
     cars: [],
-    count: 0,
+    count: null,
   },
   error: null,
   page: 1,
+  pageCount: 1,
   currentFilter: {
     carName: "",
     carCategory: "",
@@ -57,6 +58,7 @@ export const carListSlice = createSlice({
         state.isLoading = false;
         state.data.cars = action.payload.cars;
         state.data.count = action.payload.count;
+        state.data.pageCount = action.payload.pageCount;
         console.log(state.data.count);
       })
       .addCase(getCarList.rejected, (state, action) => {

@@ -29,3 +29,17 @@
   color: #fff;
   font-weight: 700;
 }
+
+.navbar-side {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar-container {
+    display: none;
+  }
+
+  .navbar-side {
+    display: block;
+  }
+}

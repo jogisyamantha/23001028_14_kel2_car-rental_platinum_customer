@@ -32,10 +32,12 @@ const Login = () => {
         .unwrap()
         .then((res) => {
           // handle successful login
-          const queryParams = new URLSearchParams(location.search);
-          const source = queryParams.get("source");
-          if (source === null) navigate(`/`);
-          else navigate(`/${source}`);
+          // const queryParams = new URLSearchParams(location.search);
+          // const source = queryParams.get("source");
+          // if (source === null) navigate(`/`);
+          // else navigate(`/${source}`);
+          if (loginState.historyUrl === null) navigate(`/`);
+          else navigate(`${loginState.historyUrl}`);
         })
         .catch((error) => {
           // handle error

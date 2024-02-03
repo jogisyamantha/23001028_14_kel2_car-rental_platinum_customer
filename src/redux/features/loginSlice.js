@@ -22,12 +22,17 @@ const initialState = {
   loading: false,
   success: false,
   error: "",
+  historyUrl: null,
 };
 
 const loginSlice = createSlice({
   name: "login",
   initialState,
-  reducers: {},
+  reducers: {
+    setHistoryUrl: (state, action) => {
+      state.historyUrl = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(postLogin.pending, (state) => {
       state.loading = true;
@@ -46,4 +51,5 @@ const loginSlice = createSlice({
   },
 });
 
+export const { setHistoryUrl } = loginSlice.actions;
 export default loginSlice.reducer;

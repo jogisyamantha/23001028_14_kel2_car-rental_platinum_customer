@@ -5,13 +5,14 @@ import Terms from "./terms";
 import CarType from "../../components/CarType";
 import "./styles.css";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { carById } from "../../redux/features/carDetailSlice";
 import { createOrder } from "../../redux/features/createOrderSlice";
 import { DatePicker, notification, ConfigProvider, Spin } from "antd";
 import dayjs from "dayjs";
 import { Helmet } from "react-helmet";
+import { setHistoryUrl } from "../../redux/features/loginSlice";
 
 const CarDetail = () => {
   const ERROR_SCR =
@@ -48,6 +49,8 @@ const CarDetail = () => {
     return new Intl.NumberFormat("id-ID").format(item);
   };
 
+  const location = useLocation();
+
   const handleSubmit = () => {
     if (startDate == "" || endDate == "") {
       api.error({
@@ -55,6 +58,7 @@ const CarDetail = () => {
         description: "Silahkan isi tanggal sewa",
       });
     } else {
+      dispatch(setHistoryUrl(location.pathname));
       const payload = {
         start_rent_at: startDate,
         finish_rent_at: endDate,

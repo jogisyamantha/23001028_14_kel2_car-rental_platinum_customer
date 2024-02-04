@@ -26,8 +26,9 @@ const CarDetail = () => {
   const [api, contextHolder] = notification.useNotification();
   const { car } = useSelector((state) => state.detail);
   const { isLoading } = useSelector((state) => state.createOrder);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+
+  const [value, setValue] = useState(null);
+  const [disabled] = useState(true);
 
   useEffect(() => {
     dispatch(carById(param.id));
@@ -38,13 +39,9 @@ const CarDetail = () => {
     event.target.onerror = null;
   };
 
-  const handleChange = (date, dateString) => {
-    setStartDate(dateString[0]);
-    setEndDate(dateString[1]);
-  };
-
   const disabledDate = (current) => {
-    return current && current < dayjs().endOf("day");
+    const yesterday = current < dayjs().startOf("day");
+    return yesterday;
   };
 
   const formatedPrice = (item) => {
@@ -52,31 +49,29 @@ const CarDetail = () => {
   };
 
   const handleSubmit = () => {
-    if (startDate == "" || endDate == "") {
+    if (value == null) {
       api.error({
         message: "Error!!",
         description: "Silahkan isi tanggal sewa",
       });
     } else {
       const payload = {
-        start_rent_at: startDate,
-        finish_rent_at: endDate,
+        start_rent_at: value[0].format("YYYY-MM-DD"),
+        finish_rent_at: value[1].format("YYYY-MM-DD"),
         car_id: car.id,
       };
       dispatch(createOrder(payload)).then((response) => {
         const id = response.payload.id;
         dispatch(setCurrentDataPayLoadOrder(payload));
         navigate(`/order/${id}`);
-        // console.log(response.payload.id);
       });
     }
-    // console.log(startDate, endDate);
   };
 
   return (
     <div>
       <Helmet>
-        <title>{`Binar Car Rental | ${car.name}`}</title>
+        <title>{`Sewa ${car.name} sekarang`}</title>
         <meta
           name="description"
           content={`Binar Car Rental, Sewa ${car.name} sekarang`}
@@ -86,7 +81,7 @@ const CarDetail = () => {
       <div className="header-exclude-hero">
         <Navbar />
       </div>
-      <SearchBar />
+      <SearchBar disabled={disabled} />
       <div className="car-detail">
         <Terms />
         <div className="car-detail-card">
@@ -111,11 +106,10 @@ const CarDetail = () => {
               }}
             >
               <RangePicker
-                allowEmpty={[false, false]}
-                popupStyle={{ color: "info" }}
                 disabledDate={disabledDate}
                 placeholder={["Pilih tanggal"]}
-                onChange={(date, dateString) => handleChange(date, dateString)}
+                onChange={setValue}
+                value={value}
               />
             </ConfigProvider>
           </div>

@@ -27,13 +27,19 @@ const initialState = {
 const loginSlice = createSlice({
   name: "login",
   initialState,
-  reducers: {},
+  reducers: {
+    setHistoryUrl: (state, action) => {
+      state.historyUrl = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(postLogin.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(postLogin.fulfilled, (state, action) => {
-      state.loading = false;
       state.success = true;
       state.email = action.payload.email;
       localStorage.setItem("access_token", action.payload.access_token);
@@ -46,4 +52,5 @@ const loginSlice = createSlice({
   },
 });
 
+export const { setHistoryUrl, setLoading } = loginSlice.actions;
 export default loginSlice.reducer;

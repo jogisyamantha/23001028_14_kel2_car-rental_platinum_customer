@@ -56,10 +56,10 @@ export const routes = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
-  {
-    path: "*",
-    element: <PageNotFound />,
-  },
+  // {
+  //   path: "*",
+  //   element: <PageNotFound />,
+  // },
   {
     path: "/order/:id/payment/invoice",
     element: (

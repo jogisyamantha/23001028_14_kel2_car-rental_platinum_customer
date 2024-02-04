@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 import Logo from "../../assets/logo.png";
 import { notification, Spin } from "antd";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [loginPayload, setloginPayload] = useState({
@@ -50,6 +51,13 @@ const Login = () => {
 
   return (
     <div className="login-container">
+      <Helmet>
+        <title>Login | Binar Car Rental </title>
+        <meta
+          name="description"
+          content="Binar Car Rental, Login dengan akunmu"
+        />
+      </Helmet>
       {contextHolder}
       <div className="left-login">
         <div className="left-login-container">

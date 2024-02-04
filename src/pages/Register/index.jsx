@@ -4,6 +4,7 @@ import { postRegister } from "../../redux/features/registerSlice";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { notification, Spin } from "antd";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const [registerPayload, setRegisterPayload] = useState({
@@ -52,6 +53,13 @@ const Register = () => {
 
   return (
     <div className="login-container">
+      <Helmet>
+        <title>Register | Binar Car Rental </title>
+        <meta
+          name="description"
+          content="Binar Car Rental, daftarkan dirimu sekarang!"
+        />
+      </Helmet>
       {contextHolder}
       <div className="left-login">
         <div className="left-login-container">

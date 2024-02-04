@@ -32,12 +32,17 @@ const initialState = {
     finish_rent_at: "",
     carId: 0,
   },
+  currentDataPayloadOrder: null,
 };
 
 export const createOrderSlice = createSlice({
   name: "createOrder",
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentDataPayLoadOrder: (state, action) => {
+      state.currentDataPayloadOrder = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(createOrder.pending, (state) => {
       state.isLoading = true;
@@ -50,4 +55,5 @@ export const createOrderSlice = createSlice({
   },
 });
 
+export const { setCurrentDataPayLoadOrder } = createOrderSlice.actions;
 export default createOrderSlice.reducer;

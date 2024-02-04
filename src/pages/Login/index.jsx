@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { postLogin } from "../../redux/features/loginSlice";
+import { postLogin, setLoading } from "../../redux/features/loginSlice";
+import {
+  createOrder,
+  setCurrentDataPayLoadOrder,
+} from "../../redux/features/createOrderSlice";
 import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 import Logo from "../../assets/logo.png";
@@ -14,6 +18,7 @@ const Login = () => {
   const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
   const loginState = useSelector((state) => state.login);
+  const orderState = useSelector((state) => state.createOrder);
   const navigate = useNavigate();
 
   const handleOnChange = (e) => {
@@ -31,16 +36,25 @@ const Login = () => {
       dispatch(postLogin(loginPayload))
         .unwrap()
         .then((res) => {
-          // handle successful login
-          // const queryParams = new URLSearchParams(location.search);
-          // const source = queryParams.get("source");
-          // if (source === null) navigate(`/`);
-          // else navigate(`/${source}`);
-          if (loginState.historyUrl === null) navigate(`/`);
-          else navigate(`${loginState.historyUrl}`);
+          if (orderState.currentDataPayloadOrder !== null) {
+            dispatch(createOrder(orderState.currentDataPayloadOrder))
+              .unwrap()
+              .then((res) => {
+                console.log(res);
+                const id = res.id;
+                navigate(`/order/${id}`);
+                dispatch(setLoading(false));
+                dispatch(setCurrentDataPayLoadOrder(null));
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } else {
+            navigate("/");
+            dispatch(setLoading(false));
+          }
         })
         .catch((error) => {
-          // handle error
           api["error"]({
             message: "Upps!!",
             description:
@@ -55,7 +69,6 @@ const Login = () => {
       {contextHolder}
       <div className="left-login">
         <div className="left-login-container">
-          {/* modal === true ? <PopUpModal> : */}
           <div>
             <img src={Logo} alt="dummy-logo" />
           </div>

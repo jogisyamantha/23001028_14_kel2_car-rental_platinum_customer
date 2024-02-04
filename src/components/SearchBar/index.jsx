@@ -4,11 +4,12 @@ import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getCarList } from "../../redux/features/carListSlice";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const [carName, setCarName] = useState("");
   const [carCategory, setCarCategory] = useState("");
   const [carIsRented, setCarIsRented] = useState("");
   const [carPrice, setCarPrice] = useState("");
+  // const [disabled] = useState(false);
 
   const carListState = useSelector((state) => state.list);
   const dispatch = useDispatch();
@@ -51,11 +52,16 @@ const SearchBar = () => {
             placeholder="Innova"
             value={carName}
             onChange={getCarNameInput}
+            disabled={props?.disabled}
           />
         </div>
         <div>
           <label>Kategori</label>
-          <select value={carCategory} onChange={getCarCategoryInput}>
+          <select
+            value={carCategory}
+            onChange={getCarCategoryInput}
+            disabled={props?.disabled}
+          >
             <option>-</option>
             <option value="small">2-3 orang</option>
             <option value="medium">4-5 orang</option>
@@ -64,7 +70,11 @@ const SearchBar = () => {
         </div>
         <div>
           <label>Harga</label>
-          <select value={carPrice} onChange={getCarPriceInput}>
+          <select
+            value={carPrice}
+            onChange={getCarPriceInput}
+            disabled={props?.disabled}
+          >
             <option value="">-</option>
             <option value="minPrice=0&maxPrice=250000">
               Rp. 0 - Rp. 250.000
@@ -79,13 +89,17 @@ const SearchBar = () => {
         </div>
         <div>
           <label>Status</label>
-          <select value={carIsRented} onChange={getCarStatusInput}>
+          <select
+            value={carIsRented}
+            onChange={getCarStatusInput}
+            disabled={props?.disabled}
+          >
             <option value="">-</option>
             <option value="true">Disewakan</option>
             <option value="false">Tersewa</option>
           </select>
         </div>
-        <button onClick={handleFindCars}>
+        <button disabled={props?.disabled} onClick={handleFindCars}>
           {carListState.data.count > 0 ? "Edit" : "Cari Mobil"}
         </button>
       </div>
